@@ -1,0 +1,26 @@
+{
+  "name": "quizzimodo",
+  "version": "1.0.0",
+  "description": "A community-driven quizzing platform",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lstuartfry/quizzimodo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lstuartfry/quizzimodo/issues"
+  },
+  "homepage": "https://github.com/lstuartfry/quizzimodo",
+  "dependencies": {
+    "bookshelf": "^0.9.5",
+    "express": "^4.13.4",
+    "knex": "^0.11.4",
+    "sqlite3": "^3.1.4"
+  }
+}
