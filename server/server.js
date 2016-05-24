@@ -17,7 +17,7 @@ var UserAnswers = require('../db_config/models/userAnswers.js');
 var UserAttempts = require('../db_config/models/userAttempts.js');
 
 
-app.post('/signup', function(req, res){
+app.post('/api/users/signup', function(req, res){
   //this server request needs an object assigned to req.body
   //that contains: {username: 'Davy', password: 'kittens', name: 'Dave Grohl',
   //email: 'dave@gmail.com, active: true'}
