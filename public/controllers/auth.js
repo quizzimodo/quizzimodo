@@ -6,8 +6,8 @@ angular.module('quizzimodo.auth', [])
   $scope.signin = function() {
     Auth.signin($scope.user)
     .then(function (token) {
-      //add localStorage.setItem command
-      $location.path('/quizzes');
+      $window.localStorage.setItem('com.quizzimodo', token);
+      $location.path('/main');
     })
     .catch(function(error) {
       console.error(error);
@@ -17,8 +17,8 @@ angular.module('quizzimodo.auth', [])
   $scope.signup = function() {
     Auth.signup($scope.user)
     .then(function(token) {
-      //add localStorage.setItem command
-      $location.path('/quizzes');
+      $window.localStorage.setItem('com.quizzimodo', token);
+      $location.path('/main');
     })
     .catch(function(error) {
       console.error(error);
