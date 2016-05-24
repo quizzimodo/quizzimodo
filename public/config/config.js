@@ -4,37 +4,77 @@ angular.module('quizzimodo', [
   'quizzimodo.quiz',
   'quizzimodo.question',
   'quizzimodo.user',
-  'ngRoute'
+  'ui.router'
 ])
-.config(function($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/main', {
-      templateUrl: '../views/main.html',
-      controller: 'MainController'
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  $stateProvider
+    .state('app', {
+      url: '/',
+      views: {
+        'nav': {
+          templateUrl: '../views/nav.html',
+          controller: 'NavController'
+        }
+      }
     })
-    .when('/signin', {
-      templateUrl: '../views/signin.html',
-      controller: 'AuthController'
+    .state('app.signin', {
+      url: 'signin',
+      views: {
+        '': {
+          templateUrl: '../views/signin.html',
+          controller: 'AuthController'
+        }
+      }
     })
-    .when('/signup', {
-      templateUrl: '../views/signup.html',
-      controller: 'AuthController'
+    .state('app.signup', {
+      url: 'signup',
+      views: {
+        '': {
+          templateUrl: '../views/signup.html',
+          controller: 'AuthController'
+        }
+      }
     })
-    .when('/quiz', {
-      templateUrl: '../views/quiz.html',
-      controller: 'QuizController'
+    .state('app.main', {
+      url: 'main',
+      views: {
+        '': {
+          templateUrl: '../views/main.html',
+        }
+        'sidebar': {
+          templateUrl: '../views/sidebar.html',
+          controller: 'SidebarController'
+        }
+      }
     })
-    .when('/question', {
-      templateUrl: '../views/question.html',
-      controller: 'QuestionController'
+    .state('app.main.user', {
+      url: 'user',
+      views: {
+        '' : {
+          templateUrl: '../views/user.html',
+          controller: 'UserController'        
+        }
+      }  
     })
-    .when('/user', {
-      templateUrl: '../views/user.html',
-      controller: 'UserController'
+    .state('app.main.quiz', {
+      url: 'quiz',
+      views: {
+        '': {
+          templateUrl: '../views/quiz.html',
+          controller: 'QuizController'
+        }
+      }
     })
-    .otherwise({
-      redirectTo: '/'
+    .state('app.main.question', {
+      url: 'question',
+      views: {
+        '': {
+          templateUrl: '../views/question.html',
+          controller: 'QuestionController'          
+        }
+      }
     });
+  $urlRouterProvider.otherwise('/');
   $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
