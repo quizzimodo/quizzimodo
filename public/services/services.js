@@ -39,3 +39,19 @@ angular.module('quizzimodo.services', [])
     isAuth: isAuth
   }
 })
+
+.factory('Nav', function($http) {
+  var getTopics = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/topics'
+    })
+    .then(function(resp) {
+      return resp.data
+    });
+  }
+
+  return {
+    getTopics: getTopics
+  }
+});
