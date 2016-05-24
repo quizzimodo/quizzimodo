@@ -1,0 +1,29 @@
+<div id="sidebar">
+  <div class="container" layout="column">
+      <md-sidenav class="md-whiteframe-8dp" md-is-locked-open="true">
+      <div>DASHBOARD</div>
+        <md-list>
+          <md-list-item>
+            <md-button ng-click="loadProfile()">
+              <md-icon md-svg-src="assets/exampleIcon.png" class="avatar">{{user.avatar}}</md-icon>
+            </md-button>
+          <md-list-item>
+            <md-button class="btn1" ng-click="loadProfile()">
+              <p>{{user.name}}</p>
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="btn1" ng-click="loadProfile()">
+              <p>{{user.username}}</p>
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="btn1" ng-click="editProfile()">
+              <p>Edit profile</p>
+            </md-button>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>
+  </div>
+</div>
+
