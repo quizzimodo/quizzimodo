@@ -17,7 +17,7 @@ var UserAnswers = require('../db_config/models/userAnswers.js');
 var UserAttempts = require('../db_config/models/userAttempts.js');
 
 
-app.post('/signup', function(req, res){
+app.post('/api/users/signup', function(req, res){
   //this server request needs an object assigned to req.body
   //that contains: {username: 'Davy', password: 'kittens', name: 'Dave Grohl',
   //email: 'dave@gmail.com, active: true'}
@@ -31,8 +31,28 @@ app.post('/signup', function(req, res){
 
   user.save().then(function(newUser){
     Users.add(newUser);
+    res.redirect('/main');
   });
 
+});
+
+app.post('/api/users/signin', function(req, res){
+  //this server request needs an object assigned to req.body
+  //that contains {username: 'Davy', password: 'kittens'}
+  new User({username: req.body.username}).fetch().then(function(record){
+    if(!record){
+      console.log('Record not found');
+      res.redirect('/signin');
+    } else {
+      if(req.body.password === record.attributes.password){
+        console.log('Record found');
+        res.redirect('/main');
+      } else {
+        console.log('User authentication failed');
+        res.redirect('/signin');
+      }
+    }
+  });
 });
 
 
