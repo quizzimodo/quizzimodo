@@ -52,9 +52,9 @@ angular.module('quizzimodo', [
       views: {
         '' : {
           templateUrl: '../views/user.html',
-          controller: 'UserController'        
+          controller: 'UserController'
         }
-      }  
+      }
     })
     .state('app.main.quiz', {
       url: 'quiz',
@@ -70,7 +70,7 @@ angular.module('quizzimodo', [
       views: {
         '': {
           templateUrl: '../views/question.html',
-          controller: 'QuestionController'          
+          controller: 'QuestionController'
         }
       }
     });
