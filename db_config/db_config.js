@@ -35,6 +35,18 @@ db.schema.hasTable('topic').then(function(exists){
   }
 });
 
+db.schema.hasTable('subtopic').then(function(exists){
+  if(!exists){
+    db.schema.createTable('subtopic', function(table){
+      table.increments('id');
+      table.integer('topic_id').references('topic.id');
+      table.string('sub_topic');
+    }).then(function(table){
+      console.log('Created table', table);
+    });
+  }
+});
+
 db.schema.hasTable('quizzes').then(function(exists){
   if(!exists){
     db.schema.createTable('quizzes', function(table){
