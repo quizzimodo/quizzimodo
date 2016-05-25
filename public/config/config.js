@@ -26,7 +26,7 @@ angular.module('quizzimodo', [
           controller: 'AuthController'
         },
         '': {
-          templateUrl: '../views/main.html'
+          templateUrl: '../views/landing.html'
         }
       }
     })

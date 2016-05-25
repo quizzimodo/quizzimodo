@@ -1,12 +1,19 @@
-<div id="main">
+<div id="landing">
   <div ui-view="sidebar"></div>
   <div ui-view></div>
   <div>
     <div class="title">QUIZZIMODO</div>
     <div class="subtitle">A community-driven quiz platform</div>
   </div>
-  <div id="buttons">
-
+  <div class="buttons">
+    <ul class="bList">
+      <li>
+        <md-button>Log In</md-button>
+      </li>
+      <li>
+        <md-button>Sign Up</md-button>
+      </li>
+    </ul>
   </div>
   <div>
     <div class="instructions"><a ui-sref=".signin">Log in</a> or <a ui-sref=".signup">sign up</a> to get started!</div>

@@ -1,13 +1,69 @@
 body {
     background-image: url("assets/chalkboard.jpg");
+    background-size: 100% auto;
 }
 
-#main {
+#landing {
   font-family: 'Handlee', cursive;
   color: white;
-  font-size: 72px;
+
   text-align: center;
+}
+
+#landing .title {
+  font-size: 100px;
   font-weight: bold;
+}
+#landing .subtitle {
+  font-size: 65px;
+}
+#landing .instructions {
+  font-size: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+#landing .buttons {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 50%;
+  margin-top: -10px;
+  text-align: center;
+
+}
+#landing .buttons .bList {
+  list-style-type:none;
+
+}
+
+.bList .md-button {
+
+  padding: 0 24px 0 24px;
+  margin: 6px 8px 30px 8px;
+  min-width: 88px;
+  min-height: 80px;
+  border-radius: 3px;
+  font-size: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration:none;
+  border: none;
+  outline: none;
+  border: 6px solid #4CAF50;
+  background-color: #4CAF50;
+  color: black;
+
+}
+
+.bList .md-button:hover {
+    background-color: #4CAF50;
+    color: white;
+
 }
 
 .btn1 {
