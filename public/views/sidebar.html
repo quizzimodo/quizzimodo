@@ -1,26 +1,34 @@
 <div id="sidebar">
   <div class="container" layout="column">
-      <md-sidenav class="md-whiteframe-8dp" md-is-locked-open="true">
-      <div>DASHBOARD</div>
+      <md-sidenav md--component-id="left" class="mid-sidenav-left md-whiteframe-8dp" md-is-locked-open="true">
+      <md-toolbar class="md-theme-indigo">
+        <h3 class="md-toolbar-tools">DASHBOARD</h3>
+      </md-toolbar>
         <md-list>
           <md-list-item>
             <md-button ng-click="loadProfile()">
-              <md-icon md-svg-src="assets/exampleIcon.png" class="avatar">{{user.avatar}}</md-icon>
+              <md-icon class="avatar">{{user.avatar}}</md-icon>
             </md-button>
           <md-list-item>
             <md-button class="btn1" ng-click="loadProfile()">
-              <p>{{user.name}}</p>
+              <div class="name">{{user.name}}</div>
             </md-button>
           </md-list-item>
           <md-list-item>
             <md-button class="btn1" ng-click="loadProfile()">
-              <p>{{user.username}}</p>
+              <div class="username">{{user.username}}</div>
             </md-button>
           </md-list-item>
           <md-list-item>
             <md-button class="btn1" ng-click="editProfile()">
-              <p>Edit profile</p>
+              <div>Edit profile</div>
             </md-button>
+          </md-list-item>
+          <md-list-item>
+            <div>Your Quizzes:</div>
+            <div class="quiz" ng-repeat="quiz in data.quizzes"></div>
+          <md-list-item>
+            <md-button class="md-raised md-primary" ng-click="hideSidebar()">Hide</md-button>
           </md-list-item>
         </md-list>
       </md-sidenav>
