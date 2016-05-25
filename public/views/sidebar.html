@@ -6,17 +6,17 @@
       </md-toolbar>
         <md-list>
           <md-list-item>
-            <md-button ng-click="loadProfile()">
+            <md-button ui-sref=".user">
               <md-icon class="avatar">{{user.avatar}}</md-icon>
             </md-button>
           <md-list-item>
-            <md-button class="btn1" ng-click="loadProfile()">
-              <div class="name">{{user.name}}</div>
+            <md-button class="btn1">
+              <a ui-sref=".user">{{user.name}}</a>
             </md-button>
           </md-list-item>
           <md-list-item>
-            <md-button class="btn1" ng-click="loadProfile()">
-              <div class="username">{{user.username}}</div>
+            <md-button class="btn1">
+              <a class="username" ui-sref=".user">{{user.username}}</a>
             </md-button>
           </md-list-item>
           <md-list-item>
