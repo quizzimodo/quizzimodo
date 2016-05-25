@@ -38,4 +38,4 @@ angular.module('quizzimodo.services', [])
     signout: signout,
     isAuth: isAuth
   }
-})
+});

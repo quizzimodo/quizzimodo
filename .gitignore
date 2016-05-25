@@ -3,3 +3,5 @@
 /node_modules
 
 /db/quizzi_modo.sqlite
+
+/public/bower_components
