@@ -132,6 +132,3 @@ db.schema.hasTable('user_answers').then(function(exists){
 
 var Bookshelf = require('bookshelf')(db);
 module.exports = Bookshelf;
-
-
-
