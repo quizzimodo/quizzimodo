@@ -38,7 +38,6 @@ body {
 }
 #landing .buttons .bList {
   list-style-type:none;
-
 }
 
 .bList .md-button {
@@ -63,6 +62,18 @@ body {
 .bList .md-button:hover {
     background-color: #4CAF50;
     color: white;
+
+}
+
+#main #welcome {
+  font-size: 50px;
+}
+
+#main .options {
+  list-style-type:none;
+  font-size: 30px;
+  text-align: center;
+  margin: 6px 8px 30px 8px;
 
 }
 
