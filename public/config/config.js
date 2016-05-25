@@ -11,24 +11,17 @@ angular.module('quizzimodo', [
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-  //$urlRouterProvider.when('/', '/app');
-  //$urlRouterProvider.when('', '/app');
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('app', {
+    .state('nav', {
       url: '/',
       views: {
         'nav': {
           templateUrl: '../views/nav.html',
           controller: 'NavController'
-        }
-      }
-    })
-    .state('app.signin', {
-      url: 'signin',
-      views: {
-        '': {
+        },
+        'signin@nav': {
           templateUrl: '../views/signin.html',
           controller: 'AuthController'
         }
