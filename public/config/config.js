@@ -1,7 +1,7 @@
 angular.module('quizzimodo', [
   'quizzimodo.services',
   'quizzimodo.auth',
-  //'quizzimodo.main',
+  // 'quizzimodo.main',
   //'quizzimodo.quiz',
   //'quizzimodo.question',
   //'quizzimodo.user',
@@ -24,6 +24,9 @@ angular.module('quizzimodo', [
         'signin@nav': {
           templateUrl: '../views/signin.html',
           controller: 'AuthController'
+        },
+        '': {
+          templateUrl: '../views/main.html'
         }
       }
     })
