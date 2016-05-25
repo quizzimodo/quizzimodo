@@ -1,28 +1,32 @@
 var User = require('../../db_config/models/user.js');
-//var jwt = require('jwt-simple');
+var jwt = require('jwt-simple');
 
 module.exports = {
-  signin: function(req, res)  {
-    new User({username: req.body.username}).fetch().then(function(record) {
-      if(!record){
-        console.log('Record not found');
-        res.redirect('/signin');
+  signin: function (req, res, next)  {
+    User.forge({username: req.body.username})
+    .fetch()
+    .then(function (user) {
+      if (!user) {
+        next(new Error('User does not exist'));
       } else {
-        User.comparePasswords(req.body.password)
-        .then(function(isMatch) {
+        user.comparePasswords(req.body.password)
+        .then(function (isMatch) {
           if (isMatch) {
-            console.log('Record found');
-            res.redirect('/main');
+            user.token = jwt.encode(user, 'secret');
+            res.json(user);
           } else {
-            console.log('User authentication failed');
-            res.redirect('/signin');
+            next(new Error('Invalid password'));
           }
         });
       }
+    })
+    .catch(function (err) {
+      res.status(500).json({error: true, data: {message: err.message}});
     });
   },
-  signup: function(req, res) {
-    var user = new User({
+
+  signup: function (req, res, next) {
+    var newUser = User.forge({
       username: req.body.username,
       password: req.body.password,
       name: req.body.name,
@@ -30,10 +34,21 @@ module.exports = {
       active: true
     });
 
-    user.save().then(function(newUser) {
-      Users.add(newUser);
-      res.redirect('/main');
+    User.forge({username: newUser.username})
+    .fetch()
+    .then(function (user) {
+      if (user) {
+        next(new Error('User already exists'));
+      } else {
+        newUser.save()
+        .then(function (user) {
+          user.token = jwt.encode(user, 'secret');
+          res.json(user);
+        });
+      }
+    })
+    .catch(function (err) {
+      res.status(500).json({error: true, data: {message: err.message}});
     });
-
   }
 };
