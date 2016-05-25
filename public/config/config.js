@@ -1,12 +1,20 @@
 angular.module('quizzimodo', [
+  'quizzimodo.services',
   'quizzimodo.auth',
-  'quizzimodo.main',
-  'quizzimodo.quiz',
-  'quizzimodo.question',
-  'quizzimodo.user',
+  //'quizzimodo.main',
+  //'quizzimodo.quiz',
+  //'quizzimodo.question',
+  //'quizzimodo.user',
+  'quizzimodo.nav',
+  'ngMaterial',
+  'ngMessages',
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  //$urlRouterProvider.when('/', '/app');
+  //$urlRouterProvider.when('', '/app');
+  $urlRouterProvider.otherwise('/');
+
   $stateProvider
     .state('app', {
       url: '/',
@@ -40,7 +48,7 @@ angular.module('quizzimodo', [
       views: {
         '': {
           templateUrl: '../views/main.html',
-        }
+        },
         'sidebar': {
           templateUrl: '../views/sidebar.html',
           controller: 'SidebarController'
@@ -52,9 +60,9 @@ angular.module('quizzimodo', [
       views: {
         '' : {
           templateUrl: '../views/user.html',
-          controller: 'UserController'        
+          controller: 'UserController'
         }
-      }  
+      }
     })
     .state('app.main.quiz', {
       url: 'quiz',
@@ -70,11 +78,10 @@ angular.module('quizzimodo', [
       views: {
         '': {
           templateUrl: '../views/question.html',
-          controller: 'QuestionController'          
+          controller: 'QuestionController'
         }
       }
     });
-  $urlRouterProvider.otherwise('/');
   $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
