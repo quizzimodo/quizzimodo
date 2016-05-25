@@ -1,9 +1,30 @@
-<div id="signin">
-  <h1>Sign In</h1>
-  <form name="signinForm" ng-submit="signin()">
-    <input type="text" ng-model="user.username">
-    <input type="text" ng-model="user.password">
-    <button>Sign In</button>
-  </form>
-  <a ui-sref=".signup">Don't have an account? <strong>Sign Up</strong></a>
+
+<div id-"signin">
+  <div layout="column" flex-sm="100" flex="33" layout-align="center center">
+        <md-menu md-position-mode="target-right target">
+          <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
+            <md-button class="md-raised" aria-label="Login">
+             <a ui-sref=".signin">Login</a>
+           </md-button>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item>
+              <h1>Sign In</h1>
+            </md-menu-item>
+            <md-menu-item>
+              <form name="signinForm" ng-submit="signin()">
+                <input type="text" ng-model="user.username">
+                <input type="text" ng-model="user.password">
+                <button>Sign In</button>
+              </form>
+            </md-menu-item>
+            <md-menu-item>
+              <a ui-sref=".signup">Don't have an account? <strong>Sign Up</strong></a>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+    </div>
+  </div>
 </div>
