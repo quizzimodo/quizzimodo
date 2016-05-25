@@ -14,70 +14,40 @@ angular.module('quizzimodo', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('nav', {
+    .state('app', {
       url: '/',
       views: {
-        'nav': {
-          templateUrl: '../views/nav.html',
-          controller: 'NavController'
-        },
-        'signin@nav': {
-          templateUrl: '../views/signin.html',
-          controller: 'AuthController'
-        },
+        'nav': navView,
+        'signin@app': signinView,
         '': {
           templateUrl: '../views/landing.html'
         }
       }
     })
-    .state('app.signup', {
-      url: 'signup',
+    .state('signup', {
+      url: '/signup',
       views: {
+        'nav': navView,
+        'signin@signup': signinView,
         '': {
           templateUrl: '../views/signup.html',
           controller: 'AuthController'
         }
       }
     })
-    .state('app.main', {
-      url: 'main',
+    .state('main', {
+      url: '/main',
       views: {
+        'nav': navView,
+        'signin@main': signinView,
         '': {
           templateUrl: '../views/main.html',
-        },
-        'sidebar': {
-          templateUrl: '../views/sidebar.html',
-          controller: 'SidebarController'
-        }
-      }
-    })
-    .state('app.main.user', {
-      url: 'user',
-      views: {
-        '' : {
-          templateUrl: '../views/user.html',
-          controller: 'UserController'
-        }
-      }
-    })
-    .state('app.main.quiz', {
-      url: 'quiz',
-      views: {
-        '': {
-          templateUrl: '../views/quiz.html',
-          controller: 'QuizController'
-        }
-      }
-    })
-    .state('app.main.question', {
-      url: 'question',
-      views: {
-        '': {
-          templateUrl: '../views/question.html',
-          controller: 'QuestionController'
+          controller: 'AuthController'
         }
       }
     });
+
+
   $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
@@ -100,3 +70,13 @@ angular.module('quizzimodo', [
     }
   });
 });
+
+  var navView = {
+          templateUrl: '../views/nav.html',
+          controller: 'NavController'
+        };
+
+ var signinView = {
+          templateUrl: '../views/signin.html',
+          controller: 'AuthController'
+        };
