@@ -14,8 +14,8 @@
             <md-menu-item>
               <form name="signinForm" ng-submit="signin()">
                 <input type="text" ng-model="user.username">
-                <input type="password" ng-model="user.password">
-                <button>Sign In</button>
+                <input type="text" ng-model="user.password">
+                <button ng-click="signin(user.username, user.password)">Sign In</button>
               </form>
             </md-menu-item>
             <md-menu-item>
