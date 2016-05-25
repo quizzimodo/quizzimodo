@@ -8,7 +8,7 @@ angular.module('quizzimodo.services', [])
       data: user
     })
     .then(function(resp) {
-      return resp.data.token;
+      return resp.data;
     });
   };
 
@@ -19,7 +19,7 @@ angular.module('quizzimodo.services', [])
       data: user
     })
     .then(function(resp) {
-      return resp.data.token;
+      return resp.data;
     });
   };
 
