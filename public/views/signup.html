@@ -3,7 +3,9 @@
   <form name="signupForm" ng-submit="signup()">
     <input type="text" ng-model="user.username">
     <input type="text" ng-model="user.password">
+    <input type="text" ng-model="user.name">
+    <input type="email" ng-model="user.email">
     <button>Sign Up</button>
   </form>
-  <a href="#signin">Already have an account? <strong>Sign In</strong></a>
+  <a ui-sref=".signin">Already have an account? <strong>Sign In</strong></a>
 </div>

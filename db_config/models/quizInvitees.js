@@ -1,8 +1,8 @@
 var bookshelf = require('../db_config.js');
 
-var QuizInvites = bookshelf.Model.extend({
+var QuizInvitees = bookshelf.Model.extend({
   tablename: 'quiz_invites',
   hasTimestamps: true
 });
 
-module.exports = QuizInvites;
+module.exports = QuizInvitees;

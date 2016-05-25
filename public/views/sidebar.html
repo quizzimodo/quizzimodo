@@ -1,0 +1,37 @@
+<div id="sidebar">
+  <div class="container" layout="column">
+      <md-sidenav md--component-id="left" class="mid-sidenav-left md-whiteframe-8dp" md-is-locked-open="true">
+      <md-toolbar class="md-theme-indigo">
+        <h3 class="md-toolbar-tools">DASHBOARD</h3>
+      </md-toolbar>
+        <md-list>
+          <md-list-item>
+            <md-button ui-sref=".user">
+              <md-icon class="avatar">{{user.avatar}}</md-icon>
+            </md-button>
+          <md-list-item>
+            <md-button class="btn1">
+              <a ui-sref=".user">{{user.name}}</a>
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="btn1">
+              <a class="username" ui-sref=".user">{{user.username}}</a>
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="btn1" ng-click="editProfile()">
+              <div>Edit profile</div>
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <div>Your Quizzes:</div>
+            <div class="quiz" ng-repeat="quiz in data.quizzes"></div>
+          <md-list-item>
+            <md-button class="md-raised md-primary" ng-click="hideSidebar()">Hide</md-button>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>
+  </div>
+</div>
+
