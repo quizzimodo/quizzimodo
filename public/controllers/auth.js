@@ -1,26 +1,29 @@
 angular.module('quizzimodo.auth', [])
 
 .controller('AuthController', function($scope, $window, $location, Auth, $mdDialog) {
+
   var originatorEv;
+  this.openMenu = function($mdOpenMenu, ev) {
+    originatorEv = ev;
+    $mdOpenMenu(ev);
+  };
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .textContent('You clicked the menu item at index ' + index)
+        .ok('Nice')
+        .targetEvent(originatorEv)
+    );
+    originatorEv = null;
+  };
 
-    this.openMenu = function($mdOpenMenu, ev) {
-      originatorEv = ev;
-      $mdOpenMenu(ev);
+  $scope.signin = function(user, pass) {
+    $scope.user = {
+      username: user,
+      password: pass
     };
 
-    this.announceClick = function(index) {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .title('You clicked!')
-          .textContent('You clicked the menu item at index ' + index)
-          .ok('Nice')
-          .targetEvent(originatorEv)
-      );
-      originatorEv = null;
-    };
-
-  $scope.user = {};
-  $scope.signin = function() {
     Auth.signin($scope.user)
     .then(function (token) {
       $window.localStorage.setItem('com.quizzimodo', token);
@@ -31,7 +34,14 @@ angular.module('quizzimodo.auth', [])
     });
   };
 
-  $scope.signup = function() {
+  $scope.signup = function(user, pass, name, email) {
+    $scope.user = {
+      username: user,
+      password: pass,
+      name: name,
+      email: email
+    };
+
     Auth.signup($scope.user)
     .then(function(token) {
       $window.localStorage.setItem('com.quizzimodo', token);

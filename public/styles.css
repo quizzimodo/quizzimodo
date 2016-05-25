@@ -77,3 +77,7 @@ body {
   background-color: rgba(107, 103, 91, 0.96);
   color: white;
 }
+
+#signup h1 {
+  color: white;
+}
