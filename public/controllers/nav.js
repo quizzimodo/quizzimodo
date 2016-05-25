@@ -1,6 +1,6 @@
 angular.module('quizzimodo.nav', [])
 
-.controller('NavController', function($scope, $location) {
+.controller('NavController', function($scope, $location, Nav) {
   $scope.topics = [];
   $scope.user = '';
 
