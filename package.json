@@ -18,9 +18,13 @@
   },
   "homepage": "https://github.com/lstuartfry/quizzimodo",
   "dependencies": {
+    "bcrypt": "^0.8.6",
     "bookshelf": "^0.9.5",
     "express": "^4.13.4",
     "knex": "^0.11.4",
     "sqlite3": "^3.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
   }
 }

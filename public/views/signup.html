@@ -1,11 +1,35 @@
-<div id="signup">
-  <h1>Sign Up</h1>
-  <form name="signupForm" ng-submit="signup()">
-    <input type="text" ng-model="user.username">
-    <input type="text" ng-model="user.password">
-    <input type="text" ng-model="user.name">
-    <input type="email" ng-model="user.email">
-    <button>Sign Up</button>
-  </form>
-  <a ui-sref=".signin">Already have an account? <strong>Sign In</strong></a>
+<div id="signup" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage">
+<h1>Sign Up</h1>
+
+  <md-content layout-padding="">
+    <div>
+      <form name="userForm">
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Username</label>
+            <input ng-model="user.username">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Password</label>
+            <input ng-model="user.password">
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Name</label>
+            <input ng-model="user.password">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Email</label>
+            <input ng-model="user.email">
+          </md-input-container>
+        </div>
+      </form>
+    </div>
+  </md-content>
 </div>
+

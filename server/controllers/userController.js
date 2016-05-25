@@ -1,5 +1,5 @@
-var User = require('/../../db_config/models/user.js');
-var jwt = require('jwt-simple');
+var User = require('../../db_config/models/user.js');
+//var jwt = require('jwt-simple');
 
 module.exports = {
   signin: function(req, res)  {
