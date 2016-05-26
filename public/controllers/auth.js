@@ -53,4 +53,9 @@ angular.module('quizzimodo.auth', [])
       console.error(error);
     });
   };
+
+  $scope.signout = function() {
+    Auth.signout();
+  };
+  
 });

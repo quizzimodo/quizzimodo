@@ -25,7 +25,7 @@ angular.module('quizzimodo.services', [])
 
   var signout = function() {
     $window.localStorage.removeItem('com.quizzimodo');
-    $location.path('/signin');
+    $location.path('/');
   };
 
   var isAuth = function() {
