@@ -40,6 +40,7 @@ angular.module('quizzimodo', [
       views: {
         'nav': navView,
         'signin@main': signoutView,
+        'menu@main': menuView,
         '': {
           templateUrl: '../views/main.html',
           controller: 'AuthController'
@@ -94,5 +95,10 @@ angular.module('quizzimodo', [
 
 var signoutView = {
   templateUrl: '../views/signout.html',
+  controller: 'AuthController'
+};
+
+var menuView = {
+  templateUrl: '../views/menu.html',
   controller: 'AuthController'
 };
