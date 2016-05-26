@@ -39,7 +39,7 @@ angular.module('quizzimodo', [
       url: '/main',
       views: {
         'nav': navView,
-        'signin@main': signinView,
+        'signin@main': signoutView,
         '': {
           templateUrl: '../views/main.html',
           controller: 'AuthController'
@@ -80,3 +80,8 @@ angular.module('quizzimodo', [
           templateUrl: '../views/signin.html',
           controller: 'AuthController'
         };
+
+var signoutView = {
+  templateUrl: '../views/signout.html',
+  controller: 'AuthController'
+};
