@@ -9,6 +9,17 @@ body {
 
   text-align: center;
 }
+#landing A:link {
+  text-decoration: none;
+  color: black;
+}
+#landing A:visited {
+  text-decoration: none;
+  color: black;
+}
+#landing A:hover {
+  color: white;
+}
 
 .title {
   font-family: 'Handlee', cursive;
@@ -70,7 +81,6 @@ body {
 
 .bList .md-button:hover {
     background-color: #4CAF50;
-    color: white;
 }
 #main {
   font-family: 'Handlee', cursive;
