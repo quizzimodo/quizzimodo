@@ -10,11 +10,11 @@ body {
   text-align: center;
 }
 
-#landing .title {
+.title {
   font-size: 100px;
   font-weight: bold;
 }
-#landing .subtitle {
+.subtitle {
   font-size: 65px;
 }
 #landing .instructions {
@@ -41,7 +41,6 @@ body {
 }
 
 .bList .md-button {
-
   padding: 0 24px 0 24px;
   margin: 6px 8px 30px 8px;
   min-width: 88px;
@@ -53,7 +52,7 @@ body {
   text-decoration:none;
   border: none;
   outline: none;
-  border: 6px solid #4CAF50;
+  border: 6px solid #000000;
   background-color: #4CAF50;
   color: black;
 
@@ -62,19 +61,44 @@ body {
 .bList .md-button:hover {
     background-color: #4CAF50;
     color: white;
-
 }
-
+#main {
+  font-family: 'Handlee', cursive;
+  color: white;
+  text-align: center;
+}
 #main #welcome {
   font-size: 50px;
 }
 
 #main .options {
+
   list-style-type:none;
   font-size: 30px;
   text-align: center;
   margin: 6px 8px 30px 8px;
+}
 
+.options .md-button {
+  padding: 0 24px 0 24px;
+  margin: 6px 8px 30px 8px;
+  min-width: 88px;
+  min-height: 80px;
+  border-radius: 3px;
+  font-size: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration:none;
+  border: none;
+  outline: none;
+  border: 6px solid #000000;
+  background-color: #4CAF50;
+  color: black;
+}
+
+.options .md-button:hover {
+    background-color: #4CAF50;
+    color: white;
 }
 
 .btn1 {
