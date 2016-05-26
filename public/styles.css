@@ -9,6 +9,10 @@ body {
     background-size: 100% auto;
 }
 
+a {
+  text-decoration: none;
+}
+
 #landing {
   font-family: 'Handlee', cursive;
   color: white;
@@ -142,8 +146,35 @@ body {
   color: white;
 }
 #signup h1 {
+  font-family: 'Handlee', cursive;
   color: white;
 }
+
+#take-quiz {
+  font-family: 'Handlee', cursive;
+  color: white;
+}
+
+#topic-selector {
+  background-color: white;
+  font-family: 'Handlee', cursive;
+}
+
+#quiz-selector {
+  overflow: auto;
+  background-color: transparent;
+  height: 400px;
+  width: 800px;
+}
+
+.quiz-card {
+  min-height: 150px;
+}
+
+.quiz-card img {
+  width: 75px;
+}
+
 #user #w {
   display: block;
   width: 750px;
