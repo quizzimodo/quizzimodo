@@ -12,8 +12,7 @@ angular.module('quizzimodo.sidebar', [])
     });
   };
   $scope.getUserInfo();
-});
-
+})
 .factory('User', function($http) {
   var getInfo = function() {
     return $http({
