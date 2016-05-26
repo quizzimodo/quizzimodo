@@ -8,7 +8,7 @@ var knex = require('knex')({
   useNullAsDefault: true
 });
 
-var schema = require('./schema.js');
+var Schema = require('./schema.js');
 var sequence = require('when/sequence');
 var _ = require('lodash');
 
