@@ -4,7 +4,7 @@ angular.module('quizzimodo', [
   // 'quizzimodo.main',
   //'quizzimodo.quiz',
   //'quizzimodo.question',
-  // 'quizzimodo.user',
+  'quizzimodo.user',
   'quizzimodo.nav',
   'ngMaterial',
   'ngMessages',
