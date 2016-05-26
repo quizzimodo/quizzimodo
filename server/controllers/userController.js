@@ -25,7 +25,7 @@ module.exports = {
     });
   },
 
-  signup: function (req, res, next) {
+  createUser: function (req, res, next) {
     var newUser = User.forge({
       username: req.body.username,
       password: req.body.password,

@@ -1,5 +1,5 @@
 var path = require('path');
-var db = require('knex')({
+var knex = require('knex')({
   client: 'sqlite3',
   connection: {
     charset: 'utf8',
@@ -8,127 +8,75 @@ var db = require('knex')({
   useNullAsDefault: true
 });
 
-db.schema.hasTable('users').then(function(exists){
-  if(!exists){
-    db.schema.createTable('users', function(table){
-        table.increments('id').primary();
-        table.string('username', 25);
-        table.string('password', 20);
-        table.string('name', 50);
-        table.string('email', 50);
-        table.boolean('active');
-        table.timestamps();
-    }).then(function(table){
-      console.log('Created table', table);
-    });
-  }
-});
+var schema = require('./schema.js');
+var sequence = require('when/sequence');
+var _ = require('lodash');
 
-db.schema.hasTable('topic').then(function(exists){
-  if(!exists){
-    db.schema.createTable('topic', function(table){
-      table.increments('id').primary();
-      table.string('topic_name');
-    }).then(function(table){
-      console.log('Created table', table);
-    });
-  }
-});
+function createTable(tableName) {
+  return knex.schema.createTableIfNotExists(tableName, function (table) {
+    var column;
+    var columnKeys = _.keys(Schema[tableName]);
+    _.each(columnKeys, function (key) {
+      if (Schema[tableName][key].type === 'text' && Schema[tableName][key].hasOwnProperty('fieldtype')) {
+        column = table[Schema[tableName][key].type](key, Schema[tableName][key].fieldtype);
+      }
+      else if (Schema[tableName][key].type === 'string' && Schema[tableName][key].hasOwnProperty('maxlength')) {
+        column = table[Schema[tableName][key].type](key, Schema[tableName][key].maxlength);
+      }
+      else {
+        column = table[Schema[tableName][key].type](key);
+      }
 
-db.schema.hasTable('subtopic').then(function(exists){
-  if(!exists){
-    db.schema.createTable('subtopic', function(table){
-      table.increments('id');
-      table.integer('topic_id').references('topic.id');
-      table.string('sub_topic');
-    }).then(function(table){
-      console.log('Created table', table);
-    });
-  }
-});
+      if (Schema[tableName][key].hasOwnProperty('nullable') && Schema[tableName][key].nullable === true) {
+        column.nullable();
+      }
+      else {
+        column.notNullable();
+      }
 
-db.schema.hasTable('quizzes').then(function(exists){
-  if(!exists){
-    db.schema.createTable('quizzes', function(table){
-      table.increments('id').primary();
-      table.string('quiz_name');
-      table.integer('topic').references('topic.id');
-      table.integer('created_by');
-      table.boolean('public');
-      table.dateTime('start');
-      table.dateTime('end');
-      table.boolean('active');
-    }).then(function(table){
-      console.log('Created table', table);
-    });
-  }
-});
+      if (Schema[tableName][key].hasOwnProperty('primary') && Schema[tableName][key].primary === true) {
+        column.primary();
+      }
 
-db.schema.hasTable('quiz_invitees').then(function(exists){
-  if(!exists){
-    db.schema.createTable('quiz_invitees', function(table){
-      table.increments('id');
-      table.integer('quiz_id').references('quizzes.id');
-      table.integer('user_id').references('users.id');
-    }).then(function(table){
-      console.log('Created table', table);
+      if (Schema[tableName][key].hasOwnProperty('unique') && Schema[tableName][key].unique) {
+        column.unique();
+      }
+      
+      if (Schema[tableName][key].hasOwnProperty('unsigned') && Schema[tableName][key].unsigned) {
+        column.unsigned();
+      }
+      
+      if (Schema[tableName][key].hasOwnProperty('references')) {
+        column.references(Schema[tableName][key].references);
+      }
+      
+      if (Schema[tableName][key].hasOwnProperty('defaultTo')) {
+        column.defaultTo(Schema[tableName][key].defaultTo);
+      }
     });
-  }
-});
+    table.timestamps(true);
+  });
+}
 
-db.schema.hasTable('questions').then(function(exists){
-  if(!exists){
-    db.schema.createTable('questions', function(table){
-      table.increments('id').primary();
-      table.integer('quiz_id').references('quizzes.id');
-      table.string('question', 300);
-    }).then(function(table){
-      console.log('Created table', table);
-    });
-  }
-});
+function createTables () {
+  var tables = [];
+  var tableNames = _.keys(Schema);
+  tables = _.map(tableNames, function (tableName) {
+    return function () {
+      return createTable(tableName);
+    };
+  });
+  return sequence(tables);
+}
 
-db.schema.hasTable('answers').then(function(exists){
-  if(!exists){
-    db.schema.createTable('answers', function(table){
-      table.increments('id').primary();
-      table.integer('question_id').references('questions.id');
-      table.string('answer_option', 200);
-      table.string('correct', 200);
-    }).then(function(table){
-      console.log('Created table', table);
-    });
-  }
+createTables()
+.then(function() {
+  console.log('Tables created!');
+})
+.catch(function (error) {
+  throw error;
 });
 
 
-db.schema.hasTable('user_attempts').then(function(exists){
-  if(!exists){
-    db.schema.createTableIfNotExists('user_attempts', function(table){
-      table.increments('id').primary();
-      table.integer('user_id').references('users.id');
-      table.integer('quiz_id').references('quizzes.id');
-      table.integer('passes');
-      table.integer('fail');
-      table.float('result');
-    }).then(function(table){
-      console.log('Created table', table);
-    });
-  }
-});
-
-db.schema.hasTable('user_answers').then(function(exists){
-  if(!exists){
-    db.schema.createTable('user_answers', function(table){
-      table.increments('id');
-      table.integer('question_id').references('questions.id');
-      table.integer('answer_id').references('answers.id');
-      table.integer('attempt_id').references('user_attempts.id');
-    }).then(function(table){
-      console.log('Created table', table);
-    });
-  }
-});
-
-var Bookshelf = require('bookshelf')(db);
+var Bookshelf = require('bookshelf')(knex);
 module.exports = Bookshelf;
