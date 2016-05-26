@@ -1,5 +1,5 @@
 var bookshelf = require('../db_config.js');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 
 var User = bookshelf.Model.extend({
   tableName: 'users',
