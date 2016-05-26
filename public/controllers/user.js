@@ -16,4 +16,4 @@ angular.module('quizzimodo.user', [])
       $(newcontent).removeClass('hidden');
   });
 });
-})
+});

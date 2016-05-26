@@ -1,9 +1,7 @@
 angular.module('quizzimodo', [
   'quizzimodo.services',
   'quizzimodo.auth',
-  // 'quizzimodo.main',
-  //'quizzimodo.quiz',
-  //'quizzimodo.question',
+  'quizzimodo.quiz',
   'quizzimodo.user',
   'quizzimodo.nav',
   'ngMaterial',
@@ -51,17 +49,32 @@ angular.module('quizzimodo', [
       url: '/user',
       views: {
         'nav': navView,
-        'signin@main': signinView,
+        'signin@user': signoutView,
+        'menu@user': menuView,
         '': {
           templateUrl: '../views/user.html',
           controller: 'UserController'
         }
       }
+    })
+    .state('takeQuiz', {
+      url: '/take_quiz',
+      views: {
+        'nav': navView,
+        'signin@takeQuiz': signoutView,
+        'menu@takeQuiz': menuView,
+        '': {
+          templateUrl: '../views/takeQuiz.html',
+          controller: 'QuizController'
+        } 
+      }
     });
+
 
 
   $httpProvider.interceptors.push('AttachTokens');
 })
+
 .factory('AttachTokens', function ($window) {
   var attach = {
     request: function (object) {
@@ -75,6 +88,7 @@ angular.module('quizzimodo', [
   };
   return attach;
 })
+
 .run(function ($rootScope, $location, Auth) {
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
@@ -83,15 +97,15 @@ angular.module('quizzimodo', [
   });
 });
 
-  var navView = {
-          templateUrl: '../views/nav.html',
-          controller: 'NavController'
-        };
+var navView = {
+  templateUrl: '../views/nav.html',
+  controller: 'NavController'
+};
 
- var signinView = {
-          templateUrl: '../views/signin.html',
-          controller: 'AuthController'
-        };
+var signinView = {
+  templateUrl: '../views/signin.html',
+  controller: 'AuthController'
+};
 
 var signoutView = {
   templateUrl: '../views/signout.html',

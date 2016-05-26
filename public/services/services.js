@@ -54,4 +54,23 @@ angular.module('quizzimodo.services', [])
   return {
     getTopics: getTopics
   }
+})
+
+.factory('Quiz', function($http) {
+
+  var getQuizzes = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/quizzes'
+    })
+    .then(function(resp) {
+      return resp.data
+    });
+  }
+
+  return {
+    getQuizzes: getQuizzes
+  }
 });
+
+
