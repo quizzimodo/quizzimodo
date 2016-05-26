@@ -4,7 +4,7 @@ angular.module('quizzimodo', [
   // 'quizzimodo.main',
   //'quizzimodo.quiz',
   //'quizzimodo.question',
-  //'quizzimodo.user',
+  // 'quizzimodo.user',
   'quizzimodo.nav',
   'ngMaterial',
   'ngMessages',
@@ -43,6 +43,17 @@ angular.module('quizzimodo', [
         '': {
           templateUrl: '../views/main.html',
           controller: 'AuthController'
+        }
+      }
+    })
+      .state('user', {
+      url: '/user',
+      views: {
+        'nav': navView,
+        'signin@main': signinView,
+        '': {
+          templateUrl: '../views/user.html',
+          controller: 'UserController'
         }
       }
     });
