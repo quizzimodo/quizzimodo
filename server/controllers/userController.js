@@ -8,7 +8,7 @@ module.exports = {
       username: req.body.username,
       password: req.body.password,
       name: req.body.name,
-      email: req.body.email
+      email: req.body.email,
     });
 
     User.forge({username: newUser.username})
@@ -20,9 +20,11 @@ module.exports = {
         newUser.save()
         .then(function (user) {
           user.token = jwt.encode(user, 'secret');
+          console.log('token attached')
           res.json(user);
         })
         .catch(function (err) {
+          console.log('error is: ', err)
           next(err);
         });
       }

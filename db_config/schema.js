@@ -5,7 +5,7 @@ module.exports = {
     password: {type: 'string', nullable: false, maxlength: 20},
     name: {type: 'string', nullable: false, maxlength: 50},
     email: {type: 'string', nullable: false, maxlength: 50},
-    bio: {type: 'text', nullable: false},
+    bio: {type: 'text', nullable: true},
     active: {type: 'boolean', nullable: false, defaultTo: true}
   },
   topic: {

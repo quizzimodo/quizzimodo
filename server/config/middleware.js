@@ -1,11 +1,13 @@
 var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
+  var bodyParser = require('body-parser')
   var userRouter = express.Router();
   var quizRouter = express.Router();
 
   app.use(express.static(__dirname + '/../../public'));
-  
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use('/api/users', userRouter);
   app.use('/api/quizzes', quizRouter);
 
