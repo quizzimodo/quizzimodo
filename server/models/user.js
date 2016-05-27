@@ -17,8 +17,7 @@ var User = bookshelf.Model.extend({
     });
   },
   comparePasswords: function (candidatePassword) {
-    console.log(candidatePassword, this.password)
-    var savedPassword = this.password;
+    var savedPassword = this.attributes.password;
     return new Promise(function(res, rej) {
       bcrypt.compare(candidatePassword, savedPassword, function (err, isMatch) {
         if (err) rej(err);
