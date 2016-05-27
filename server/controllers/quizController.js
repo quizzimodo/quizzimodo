@@ -1,5 +1,5 @@
-var Quiz = require('../../db_config/models/quiz.js');
-var Quizzes = require('../../db_config/collections/quizzes.js');
+var Quiz = require('../models/quiz.js');
+var Quizzes = require('../collections/quizzes.js');
 
 module.exports = {
   createQuiz: function (req, res, next) {
