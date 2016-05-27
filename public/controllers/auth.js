@@ -2,6 +2,8 @@ angular.module('quizzimodo.auth', [])
 
 .controller('AuthController', function($scope, $window, $location, Auth, $mdDialog) {
 
+  $scope.user = {};
+
   var originatorEv;
   this.openMenu = function($mdOpenMenu, ev) {
     originatorEv = ev;
@@ -18,14 +20,15 @@ angular.module('quizzimodo.auth', [])
     originatorEv = null;
   };
 
-  $scope.user = {
-    id: 0,
-    username: '',
-    password: '',
-    name: '',
-    email: '',
-    bio: ''
-  };
+  // TO DELETE
+  // $scope.user = {
+  //   id: 0,
+  //   username: '',
+  //   password: '',
+  //   name: '',
+  //   email: '',
+  //   bio: ''
+  // };
   
   $scope.signin = function() {
     Auth.signin($scope.user)
@@ -40,7 +43,6 @@ angular.module('quizzimodo.auth', [])
   };
 
   $scope.signup = function(user, pass, name, email) {
-    console.log('$scope.user in signup: ', $scope.user);
     Auth.signup($scope.user)
     .then(function(user) {
       $window.localStorage.setItem('com.quizzimodo', user.token);

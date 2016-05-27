@@ -19,6 +19,7 @@
   "homepage": "https://github.com/lstuartfry/quizzimodo",
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.15.1",
     "bookshelf": "^0.9.5",
     "express": "^4.13.4",
     "jwt-simple": "^0.2.0",
