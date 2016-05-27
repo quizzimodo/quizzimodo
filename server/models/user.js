@@ -9,7 +9,7 @@ var User = bookshelf.Model.extend({
   },
   hashPassword: function(model, attrs, options) {
     return new Promise(function(res, rej) {
-      bcrypt.hash(model.attributes.password, bcrypt.genSaltSync(10), function(err, hash) {
+      bcrypt.hash(model.attributes.password, bcrypt.genSaltSync(10), null, function(err, hash) {
         if (err) rej(err);
         model.set('password', hash);
         res(hash);
