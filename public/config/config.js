@@ -1,6 +1,7 @@
 angular.module('quizzimodo', [
   'quizzimodo.services',
   'quizzimodo.auth',
+  'quizzimodo.quizzes',
   'quizzimodo.quiz',
   'quizzimodo.user',
   'quizzimodo.nav',
@@ -55,6 +56,18 @@ angular.module('quizzimodo', [
           templateUrl: '../views/user.html',
           controller: 'UserController'
         }
+      }
+    })
+    .state('selectQuiz', {
+      url: '/select_quiz',
+      views: {
+        'nav': navView,
+        'signin@selectQuiz': signoutView,
+        'menu@selectQuiz': menuView,
+        '': {
+          templateUrl: '../views/selectQuiz.html',
+          controller: 'QuizzesController'
+        } 
       }
     })
     .state('takeQuiz', {

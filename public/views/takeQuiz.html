@@ -1,34 +1,36 @@
-<div id="take-quiz" layout="column" ng-cloak="" flex-offset="10" flex="80">
-    <h1>Available Quizzes</h1>
-
-   <md-input-container id="topic-selector">
-        <label>Select Topic</label>
-        <md-select ng-model="userTopic">
-          <md-option ng-repeat="topic in topics" value="{{topic}}">
-            {{topic}}
-          </md-option>
-        </md-select>
-      </md-input-container>
-
-	<md-content id="quiz-selector" class="md-padding" layout-xs="column" layout="row">
+<div id="take-quiz" layout="column" ng-cloak="" flex-offset="10" flex="70">
+<h1>{{title}}</h1>
+  <md-content id="answer-selector" class="md-padding" layout-xs="column" layout="row">
 	   <div flex-xs="" flex-gt-xs="90" layout="column" >
-
-	     <md-card class="quiz-card" ng-repeat="key in quizzes | filter:userTopic">
+	     <md-card class="answer-card" ng-repeat="key in questions">
 	       <md-card-title>
 	         <md-card-title-text>
-	           <span class="md-headline">{{ key.name }}</span>
-	           <span class="md-subhead">{{ key.topic }}</span>
+	           <span class="md-headline">{{key.question}}}</span>
 	         </md-card-title-text>
-	         <md-card-title-media>
-	           <img src="{{imagePath}}">
-	         </md-card-title-media>
 	       </md-card-title>
-	       <md-card-actions layout="row" layout-align="end center">
-	         <md-button>Take Quiz</md-button>
-	         <md-button>Details</md-button>
-	       </md-card-actions>
+	       <br>
+	       <div class="md-padding">
+		  <form>
+		    <input type="radio" name="{{key.question}}" value="{{key.answers[0]}}">
+		    {{key.answers[0]}}
+		    <br>
+		    <br>
+            <input type="radio" name="{{key.question}}" value="{{key.answers[1]}}">
+            {{key.answers[1]}}
+            <br>
+            <br>
+            <input type="radio" name="{{key.question}}" value="{{key.answers[2]}}">
+            {{key.answers[2]}}
+            <br>
+            <br>
+            <input type="radio" name="{{key.question}}" value="{{key.answers[3]}}">
+            {{key.answers[3]}}
+            <br>
+            <br>
+		  </form>
+		  </div>
 	     </md-card>
+	     <md-button class="md-raised md-primary" ng-click="submit">Submit Quiz</md-button>
 	   </div>
-	 </md-content>
-
+  </md-content>
 </div>

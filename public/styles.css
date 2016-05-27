@@ -150,6 +150,11 @@ a {
   color: white;
 }
 
+#select-quiz {
+  font-family: 'Handlee', cursive;
+  color: white;
+}
+
 #take-quiz {
   font-family: 'Handlee', cursive;
   color: white;
@@ -167,8 +172,21 @@ a {
   width: 800px;
 }
 
+#answer-selector {
+  overflow: auto;
+  background-color: transparent;
+  height: 475px;
+  width: 800px;
+}
+
 .quiz-card {
   min-height: 150px;
+}
+
+.answer-card {
+  min-height: 250px;
+  padding: 10px;
+  overflow: scroll;
 }
 
 .quiz-card img {
