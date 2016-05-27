@@ -1,0 +1,30 @@
+<div id="make-quiz" layout="column" ng-cloak="" flex-offset="10" flex="80">
+    <h1>Make a quiz</h1>
+
+  <md-input-container id="topic-selector">
+    <label>Select Topic</label>
+      <md-select ng-model="userTopic">
+        <md-option ng-repeat="topic in topics" value="{{topic}}">
+          {{topic}}
+        </md-option>
+      </md-select>
+  </md-input-container>
+  
+  <md-input-container id="subtopic-selector">
+    <label>Select Subtopic</label>
+      <md-select ng-model="userSubtopic">
+        <md-option ng-repeat="subtopic in subtopics" value="{{subtopic}}">
+          {{subtopic}}
+        </md-option>
+      </md-select>
+  </md-input-container>
+  
+  <form>
+     Quiz Title: <input type="text" ng-model="quiz.quiz" /><br />
+     Quiz Details: <input type="email" ng-model="quiz.description" /><br />
+  </form>
+
+  <div ui-view="question"></div>
+
+
+</div>
