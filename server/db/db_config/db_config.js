@@ -3,7 +3,7 @@ var knex = require('knex')({
   client: 'sqlite3',
   connection: {
     charset: 'utf8',
-    filename: path.join(__dirname, '../db/quizzi_modo.sqlite')
+    filename: path.join(__dirname, '../quizzimodo.sqlite')
   },
   useNullAsDefault: true
 });

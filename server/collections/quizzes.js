@@ -1,4 +1,4 @@
-var bookshelf = require('../db_config.js');
+var bookshelf = require('../db/db_config/db_config.js');
 var Quiz = require('../models/quiz.js');
 
 var Quizzes = new bookshelf.Collection();

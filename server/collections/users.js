@@ -1,4 +1,4 @@
-var bookshelf = require('../db_config.js');
+var bookshelf = require('../db/db_config/db_config.js');
 var User = require('../models/user.js');
 
 var Users = new bookshelf.Collection();

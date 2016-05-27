@@ -1,5 +1,5 @@
-var User = require('../../db_config/models/user.js');
-var Users = require('../../db_config/collections/users.js');
+var User = require('../models/user.js');
+var Users = require('../collections/users.js');
 var jwt = require('jwt-simple');
 
 module.exports = {
