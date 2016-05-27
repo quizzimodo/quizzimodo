@@ -18,12 +18,16 @@ angular.module('quizzimodo.auth', [])
     originatorEv = null;
   };
 
-  $scope.signin = function(user, pass) {
-    $scope.user = {
-      username: user,
-      password: pass
-    };
-
+  $scope.user = {
+    id: 0,
+    username: '',
+    password: '',
+    name: '',
+    email: '',
+    bio: ''
+  };
+  
+  $scope.signin = function() {
     Auth.signin($scope.user)
     .then(function (user) {
       $window.localStorage.setItem('com.quizzimodo', user.token);
@@ -36,13 +40,7 @@ angular.module('quizzimodo.auth', [])
   };
 
   $scope.signup = function(user, pass, name, email) {
-    $scope.user = {
-      username: user,
-      password: pass,
-      name: name,
-      email: email
-    };
-
+    console.log('$scope.user in signup: ', $scope.user);
     Auth.signup($scope.user)
     .then(function(user) {
       $window.localStorage.setItem('com.quizzimodo', user.token);
