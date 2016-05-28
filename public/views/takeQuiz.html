@@ -11,26 +11,26 @@
 	       <br>
 	       <div class="md-padding">
 		  <form>
-		    <input type="radio" name="{{key.question}}" value="{{key.answers[0]}}">
+		    <input type="radio" ng-model="answers[$index]" value="{{key.answers[0]}}">
 		    {{key.answers[0]}}
 		    <br>
 		    <br>
-            <input type="radio" name="{{key.question}}" value="{{key.answers[1]}}">
+            <input type="radio" ng-model="answers[$index]" value="{{key.answers[1]}}">
             {{key.answers[1]}}
             <br>
             <br>
-            <input type="radio" name="{{key.question}}" value="{{key.answers[2]}}">
+            <input type="radio" ng-model="answers[$index]" value="{{key.answers[2]}}">
             {{key.answers[2]}}
             <br>
             <br>
-            <input type="radio" name="{{key.question}}" value="{{key.answers[3]}}">
+            <input type="radio" ng-model="answers[$index]" value="{{key.answers[3]}}">
             {{key.answers[3]}}
             <br>
             <br>
 		  </form>
 		  </div>
 	     </md-card>
-	     <md-button class="md-raised md-primary" ng-click="submit">Submit Quiz</md-button>
+	     <md-button class="md-raised md-primary" ng-click="submit()">Submit Quiz</md-button>
 	   </div>
   </md-content>
 </div>

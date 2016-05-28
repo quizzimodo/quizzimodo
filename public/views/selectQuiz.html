@@ -24,8 +24,19 @@
 	         </md-card-title-media>
 	       </md-card-title>
 	       <md-card-actions layout="row" layout-align="end center">
-	         <md-button ng-click="takeQuiz(key.id)">{{taken}}</md-button>
-	         <md-button>Details</md-button>
+	         <md-button ng-click="takeQuiz(key.name)">{{taken}}</md-button>
+	         <md-menu md-position-mode="target-right target">
+	           <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
+	             <md-button class="md-raised" aria-label="Login">
+	              Details
+	            </md-button>
+	           </md-button>
+	           <md-menu-content width="12">
+	             <md-menu-item>
+	               {{key.details}}
+	             </md-menu-item>
+	           </md-menu-content>
+	         </md-menu>
 	       </md-card-actions>
 	     </md-card>
 	   </div>

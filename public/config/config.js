@@ -4,7 +4,6 @@ angular.module('quizzimodo', [
   'quizzimodo.quizzes',
   'quizzimodo.quiz',
   'quizzimodo.user',
-  'quizzimodo.nav',
   'ngMaterial',
   'ngMessages',
   'ui.router'
@@ -81,6 +80,18 @@ angular.module('quizzimodo', [
           controller: 'QuizController'
         } 
       }
+    })
+    .state('results', {
+      url: '/results',
+      views: {
+        'nav': navView,
+        'signin@results': signoutView,
+        'menu@results': menuView,
+        '': {
+          templateUrl: '../views/results.html',
+          controller: 'QuizController'
+        } 
+      }
     });
 
 
@@ -111,8 +122,7 @@ angular.module('quizzimodo', [
 });
 
 var navView = {
-  templateUrl: '../views/nav.html',
-  controller: 'NavController'
+  templateUrl: '../views/nav.html'
 };
 
 var signinView = {

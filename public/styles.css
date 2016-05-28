@@ -186,7 +186,7 @@ a {
 .answer-card {
   min-height: 250px;
   padding: 10px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .quiz-card img {
