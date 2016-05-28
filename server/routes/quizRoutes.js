@@ -1,9 +1,12 @@
 var quizController = require('../controllers/quizController.js');
 
 module.exports = function (app) {
-  app.get('/', quizController.getQuizzes);
-  app.get('/:id', quizController.getQuiz);
-  app.post('/new', quizController.createQuiz);
-  app.put('/:id', quizController.updateQuiz);
-  app.delete('/:id', quizController.deleteQuiz);
+  app.route('/:user_id')
+    .get(quizController.getQuizzes)
+    .post(quizController.createQuiz);
+  
+  app.route('/:user_id/:quiz_id')
+    .get(quizController.getQuiz)
+    .put(quizController.updateQuiz)
+    .delete(quizController.deleteQuiz);
 };
