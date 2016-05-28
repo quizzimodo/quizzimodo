@@ -73,12 +73,20 @@ angular.module('quizzimodo', [
       url: '/make_quiz',
       views: {
         'nav': navView,
-        'signin@takeQuiz': signoutView,
+        'signin@makeQuiz': signoutView,
         'menu@makeQuiz': menuView,
         '': {
           templateUrl: '../views/makeQuiz.html',
           controller: 'QuizController'
-        } 
+        },
+        'question@makeQuiz': {
+          templateUrl: '../views/question.html',
+          controller: 'QuizController'
+        },
+        'answers@makeQuiz': {
+          templateUrl: '../views/answers.html',
+          controller: 'QuizController'
+        }
       }
     });
 
