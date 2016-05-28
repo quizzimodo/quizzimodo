@@ -3,7 +3,7 @@ angular.module('quizzimodo.quiz', [])
 .controller('QuizController', function($scope, $location, Quiz, $rootScope) {	 
   $scope.questions = [];
 
-  $scope.addQuestion = function() {
+    $scope.addQuestion = function() {
     var correctAnswer = $('input[name=answerRadio]:checked', '#answerForm').val();
     var answerValues = [false, false, false, false];
     answerValues[correctAnswer] = true;
