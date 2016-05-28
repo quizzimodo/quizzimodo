@@ -189,9 +189,7 @@ a {
 }
 
 #quiz-selector {
-  overflow: auto;
   background-color: transparent;
-  height: 400px;
   width: 800px;
 }
 
@@ -200,6 +198,10 @@ a {
   background-color: transparent;
   height: 475px;
   width: 800px;
+}
+
+#quiz-selector md-menu-content {
+  width: 50px;
 }
 
 .question-setup {
