@@ -1,4 +1,4 @@
-<div id="makeQuiz" layout="column" ng-cloak="" flex-offset="10" flex="80">
+<div id="make-quiz" layout="column" ng-cloak="" flex-offset="10" flex="80">
     <h1>Make a quiz</h1>
 
   <md-input-container id="topic-selector">
@@ -18,13 +18,40 @@
         </md-option>
       </md-select>
   </md-input-container>
+  <div class="question-setup" layout="row" layout-align="center stretch">
   
-  <form>
-     Quiz Title: <input type="text" ng-model="quiz.quiz" /><br />
-     Quiz Details: <input type="email" ng-model="quiz.details" /><br />
-  </form>
+  <div layout="column" layout-align="center stretch">
+    <md-content id="quiz-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left center">
+       <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
+        <form>
+           Quiz Title: <input type="text" ng-model="quiz.quiz" /><br />
+           Quiz Details: <input type="email" ng-model="quiz.details" /><br />
+        </form>
+      </div>
+    </md-content>
+    <md-content id="answer-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left center" >
+      <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
 
-  <div ui-view="question"></div>
+        <div ui-view="question"></div>
+      </div>
+    </md-content>
+  </div>
 
+  <div layout="row" layout-align="none stretch">
+    <md-content id='all-questions' class="md-padding" layout-xs="column" layout="row" layout-align="left center">
+       <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
+        <form>
+           Quiz Title: <input type="text" ng-model="quiz.quiz" /><br />
+           Quiz Details: <input type="email" ng-model="quiz.details" /><br />
+        </form>
+      </div>
+    </md-content>
+  </div>
 
+  </div>
+    <section layout="row" layout-sm="column" layout-wrap="">
+      <md-button class="md-raised">Save Quiz</md-button>
+    <section layout="row" layout-sm="column" layout-wrap="">
+      <md-button class="md-raised">Add a Question</md-button>  
+    <!-- <i class="material-icons">add_box</i> -->
 </div>
