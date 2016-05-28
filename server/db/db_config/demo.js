@@ -1,11 +1,15 @@
-module.exports = [
+var bcrypt = require('bcrypt-nodejs');
+
+var password = bcrypt.hashSync('quizzimodo', bcrypt.genSaltSync(10));
+
+var DemoData = [
   {
     table: 'user',
     records: [
-      {username: 'forrest-akin', password: 'quizzimodo', name: 'forrest akin', email: 'forrest.akin@gmail.com', bio: 'Hello, world!'},
-      {username: 'idugcoal', password: 'quizzimodo', name: 'doug cole', email: 'idugcoal@gmail.com', bio: 'Hello, world!'},
-      {username: 'lstuartfry', password: 'quizzimodo', name: 'lukas stuart-fry', email: 'lstuartfry@gmail.com', bio: 'Hello, world!'},
-      {username: 'natesMI', password: 'quizzimodo', name: 'nathaniel schwab', email: 'schwab.nathaniel@gmail.com', bio: 'Hello, world!'}
+      {username: 'forrest-akin', password: password, name: 'forrest akin', email: 'forrest.akin@gmail.com', bio: 'Hello, world!'},
+      {username: 'idugcoal', password: password, name: 'doug cole', email: 'idugcoal@gmail.com', bio: 'Hello, world!'},
+      {username: 'lstuartfry', password: password, name: 'lukas stuart-fry', email: 'lstuartfry@gmail.com', bio: 'Hello, world!'},
+      {username: 'natesMI', password: password, name: 'nathaniel schwab', email: 'schwab.nathaniel@gmail.com', bio: 'Hello, world!'}
     ]
   },
   {
@@ -54,7 +58,7 @@ module.exports = [
   {
     table: 'quiz',
     records: [
-      {subtopic_id: 14, quiz: 'Javascript Closures', public: true}
+      {subtopic_id: 14, quiz: 'Javascript Closures', public: true, created_by: 1}
     ]
   },
   {
@@ -203,3 +207,5 @@ module.exports = [
     ]
   }
 ];
+
+module.exports = DemoData;

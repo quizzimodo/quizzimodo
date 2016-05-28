@@ -9,6 +9,7 @@ module.exports = {
       password: req.body.password,
       name: req.body.name,
       email: req.body.email,
+      bio: req.body.bio || null
     });
 
     User.forge({username: newUser.username})
@@ -34,7 +35,7 @@ module.exports = {
     });
   },
   deleteUser: function (req, res, next) {
-    User.forge({id: req.body.id})
+    User.forge({id: req.params.id})
     .fetch()
     .then(function (user) {
       user.save({active: false})
@@ -50,10 +51,11 @@ module.exports = {
     });
   },
   getUser: function (req, res, next) {
-    User.forge({id: req.body.id})
+    console.log(req);
+    User.forge({id: req.params.id})
     .fetch()
     .then(function (user) {
-      res.json(user);
+      res.json({error: false, data: user});
     })
     .catch(function (err) {
       next(err);
@@ -70,7 +72,7 @@ module.exports = {
     });
   },
   updateUser: function (req, res, next) {
-    User.forge({id: req.body.id})
+    User.forge({id: req.params.id})
     .fetch()
     .then(function (user) {
       user.save(req.body)

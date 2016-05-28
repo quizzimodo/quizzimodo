@@ -61,7 +61,7 @@ var createTable = (tableName) => {
         column.defaultTo(Schema[tableName][key].defaultTo);
       }
     });
-    table.timestamps(true);
+    table.timestamps(false, true);
   });
 }
 
