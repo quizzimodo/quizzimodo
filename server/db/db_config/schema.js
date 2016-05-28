@@ -39,12 +39,6 @@ module.exports = {
     answer: {type: 'text', nullable: false},
     correct: {type: 'boolean', nullable: false, defaultTo: false}
   },
-  user_answer: {
-    id: {type: 'increments', nullable: false, primary: true},
-    question_id: {type: 'integer', nullable: false, references: 'question.id'},
-    answer_option_id: {type: 'integer', nullable: false, references: 'answer_option.id'},
-    attempt_id: {type: 'integer', nullable: false, references: 'attempt.id'}
-  },
   attempt: {
     id: {type: 'increments', nullable: false, primary: true},
     quiz_id: {type: 'integer', nullable: false, references: 'quiz.id'},
@@ -52,6 +46,12 @@ module.exports = {
     pass_count: {type: 'integer', nullable: false},
     fail_count: {type: 'integer', nullable: false},
     result: {type: 'float', nullable: false}
+  },
+  user_answer: {
+    id: {type: 'increments', nullable: false, primary: true},
+    question_id: {type: 'integer', nullable: false, references: 'question.id'},
+    answer_option_id: {type: 'integer', nullable: false, references: 'answer_option.id'},
+    attempt_id: {type: 'integer', nullable: false, references: 'attempt.id'}
   },
   invitee: {
     id: {type: 'increments', nullable: false, primary: true},
