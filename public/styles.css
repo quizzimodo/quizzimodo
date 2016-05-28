@@ -16,7 +16,7 @@ a {
 }
 
 #landing {
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
   color: white;
 
   text-align: center;
@@ -34,18 +34,27 @@ a {
 }
 
 .title {
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
   color: white;
   font-size: 8vw;
-  font-weight: bold;
+  
+}
+.sketchy-form {
+
+}
+.sketchy-buttons {
+  color:green;
 }
 .subtitle {
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
   color: white;
   font-size: 4vw;
 }
+#user {
+  font-family: 'Sketchy';
+}
 #user .subtitle {
-  font-family: 'Roboto', 'Helevetica Neue', sans-serif;
+  font-family: 'Sketchy';
   color: black;
   font-size: 4.2vw;
 }
@@ -99,7 +108,7 @@ a {
     background-color: #4CAF50;
 }
 #main {
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
   color: white;
   text-align: center;
 }
@@ -147,34 +156,36 @@ a {
   background-color: rgba(107, 103, 91, 0.96);
   color: white;
 }
-#signup h1 {
-  font-family: 'Sketchy', cursive;
+#signup {
+  font-family: 'Sketchy';
+  font-size: 2vw;
   color: white;
 }
 
+
 #select-quiz {
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
   color: white;
 }
 
 #take-quiz {
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
   color: white;
 }
 #make-quiz {
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
   color: white;
   height: 100%;
 }
 
 #topic-selector {
   background-color: white;
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
 }
 
 #subtopic-selector {
   background-color: white;
-  font-family: 'Sketchy', cursive;
+  font-family: 'Sketchy';
 }
 
 #quiz-selector {
@@ -315,7 +326,8 @@ a {
    width:100%;
    height:50px;   /* Height of the footer */
 }
-
+/*
 .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 .clearfix { display: inline-block; }
 
+*/
