@@ -1,0 +1,45 @@
+<div id="select-quiz" layout="column" ng-cloak="" flex-offset="10" flex="70">
+    <h1>Available Quizzes</h1>
+
+   <md-input-container id="topic-selector">
+        <label>Select Topic</label>
+        <md-select ng-model="userTopic">
+          <md-option ng-repeat="topic in topics" value="{{topic}}">
+            {{topic}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+	<md-content id="quiz-selector" class="md-padding" layout-xs="column" layout="row">
+	   <div flex-xs="" flex-gt-xs="90" layout="column" >
+
+	     <md-card class="quiz-card" ng-repeat="key in quizzes | filter:userTopic">
+	       <md-card-title>
+	         <md-card-title-text>
+	           <span class="md-headline">{{ key.name }}</span>
+	           <span class="md-subhead">{{ key.topic }}</span>
+	         </md-card-title-text>
+	         <md-card-title-media>
+	          <img src="{{image}}">
+	         </md-card-title-media>
+	       </md-card-title>
+	       <md-card-actions layout="row" layout-align="end center">
+	         <md-button ng-click="takeQuiz(key.name)">{{taken}}</md-button>
+	         <md-menu md-position-mode="target-right target">
+	           <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
+	             <md-button class="md-raised" aria-label="Login">
+	              Details
+	            </md-button>
+	           </md-button>
+	           <md-menu-content width="12">
+	             <md-menu-item>
+	               {{key.details}}
+	             </md-menu-item>
+	           </md-menu-content>
+	         </md-menu>
+	       </md-card-actions>
+	     </md-card>
+	   </div>
+	 </md-content>
+
+</div>

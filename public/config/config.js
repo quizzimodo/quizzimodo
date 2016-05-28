@@ -1,9 +1,9 @@
 angular.module('quizzimodo', [
   'quizzimodo.services',
   'quizzimodo.auth',
+  'quizzimodo.quizzes',
   'quizzimodo.quiz',
   'quizzimodo.user',
-  'quizzimodo.nav',
   'ngMaterial',
   'ngMessages',
   'ui.router'
@@ -57,6 +57,18 @@ angular.module('quizzimodo', [
         }
       }
     })
+    .state('selectQuiz', {
+      url: '/select_quiz',
+      views: {
+        'nav': navView,
+        'signin@selectQuiz': signoutView,
+        'menu@selectQuiz': menuView,
+        '': {
+          templateUrl: '../views/selectQuiz.html',
+          controller: 'QuizzesController'
+        } 
+      }
+    })
     .state('takeQuiz', {
       url: '/take_quiz',
       views: {
@@ -87,7 +99,18 @@ angular.module('quizzimodo', [
           templateUrl: '../views/answers.html',
           controller: 'QuizController'
         }
-
+      }
+    })
+    .state('results', {
+      url: '/results',
+      views: {
+        'nav': navView,
+        'signin@results': signoutView,
+        'menu@results': menuView,
+        '': {
+          templateUrl: '../views/results.html',
+          controller: 'QuizController'
+        } 
       }
     });
 
@@ -119,8 +142,7 @@ angular.module('quizzimodo', [
 });
 
 var navView = {
-  templateUrl: '../views/nav.html',
-  controller: 'NavController'
+  templateUrl: '../views/nav.html'
 };
 
 var signinView = {

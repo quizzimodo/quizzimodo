@@ -1,6 +1,6 @@
 angular.module('quizzimodo.auth', [])
 
-.controller('AuthController', function($scope, $window, $location, Auth, $mdDialog) {
+.controller('AuthController', function($scope, $window, $location, Auth, $mdDialog, $rootScope) {
 
   $scope.user = {};
 
@@ -34,7 +34,7 @@ angular.module('quizzimodo.auth', [])
     Auth.signin($scope.user)
     .then(function (user) {
       $window.localStorage.setItem('com.quizzimodo', user.token);
-      $scope.user = user;
+      $rootScope.user = user;
       $location.path('/main');
     })
     .catch(function(error) {
