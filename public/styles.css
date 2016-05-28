@@ -10,9 +10,13 @@ body {
 a {
   text-decoration: none;
 }
+@font-face {
+    font-family: Sketchy;
+    src: url(assets/Sketchy.ttf);
+}
 
 #landing {
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
   color: white;
 
   text-align: center;
@@ -30,13 +34,13 @@ a {
 }
 
 .title {
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
   color: white;
   font-size: 8vw;
   font-weight: bold;
 }
 .subtitle {
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
   color: white;
   font-size: 4vw;
 }
@@ -95,7 +99,7 @@ a {
     background-color: #4CAF50;
 }
 #main {
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
   color: white;
   text-align: center;
 }
@@ -144,33 +148,33 @@ a {
   color: white;
 }
 #signup h1 {
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
   color: white;
 }
 
 #select-quiz {
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
   color: white;
 }
 
 #take-quiz {
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
   color: white;
 }
 #make-quiz {
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
   color: white;
   height: 100%;
 }
 
 #topic-selector {
   background-color: white;
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
 }
 
 #subtopic-selector {
   background-color: white;
-  font-family: 'Handlee', cursive;
+  font-family: 'Sketchy', cursive;
 }
 
 #quiz-selector {
