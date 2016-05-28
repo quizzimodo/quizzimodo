@@ -1,9 +1,9 @@
 <div id="signup" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" flex-offset="10" flex="80">
-<h1>Sign Up</h1>
+  <div>Sign Up</div>
 
   <md-content layout-padding="10">
     <div>
-      <form name="userForm" ng-submit="signup()">
+      <form class="sketchy-form" name="userForm" ng-submit="signup()">
 
         <div layout-gt-sm="row">
 
@@ -32,7 +32,10 @@
           </md-input-container>
 
         </div>
+    <div class="sketchy-buttons">    
       <md-button class="md-raised md-primary" type="submit">Submit</md-button>
+      <md-button class="md-raised md-primary" type="submit">Cancel</md-button>
+    </div>
       </form>
     </div>
   </md-content>
