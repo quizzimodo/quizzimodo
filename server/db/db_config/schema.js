@@ -25,6 +25,7 @@ module.exports = {
     public: {type: 'boolean', nullable: false},
     start: {type: 'dateTime', nullable: true},
     end: {type: 'dateTime', nullable: true},
+    created_by: {type: 'integer', nullable: false, references: 'user.id'},
     active: {type: 'boolean', nullable: false, defaultTo: true}
   },
   question: {
