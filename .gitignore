@@ -2,6 +2,6 @@
 
 /node_modules
 
-/db/quizzi_modo.sqlite
+**/quizzimodo.*
 
 /public/bower_components
