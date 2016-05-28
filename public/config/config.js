@@ -3,6 +3,7 @@ angular.module('quizzimodo', [
   'quizzimodo.auth',
   'quizzimodo.quizzes',
   'quizzimodo.quiz',
+  'quizzimodo.take',
   'quizzimodo.user',
   'ngMaterial',
   'ngMessages',
@@ -77,7 +78,7 @@ angular.module('quizzimodo', [
         'menu@takeQuiz': menuView,
         '': {
           templateUrl: '../views/takeQuiz.html',
-          controller: 'QuizController'
+          controller: 'TakeController'
         } 
       }
     })

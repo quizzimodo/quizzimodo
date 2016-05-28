@@ -1,6 +1,6 @@
-angular.module('quizzimodo.quiz', [])
+angular.module('quizzimodo.take', [])
 
-.controller('QuizController', function($scope, $location, Quiz, $rootScope) {
+.controller('TakeController', function($scope, $location, Quiz, $rootScope) {
 	
   $scope.title = 'Calculus Craze';
   $scope.questions = [{question: 'What is the derivative of sin(2x)?', answers: ['-2sin2x', '-2cos2x', '2cos2x', '2sin2x']}, 
