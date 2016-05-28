@@ -1,7 +1,7 @@
 var helpers = require('./helpers.js');
+var bodyParser = require('body-parser')
 
 module.exports = function (app, express) {
-  var bodyParser = require('body-parser')
   var userRouter = express.Router();
   var quizRouter = express.Router();
 

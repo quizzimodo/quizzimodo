@@ -1,18 +1,25 @@
 var path = require('path');
+var sequence = require('when/sequence');
+var _ = require('lodash');
 var knex = require('knex')({
   client: 'sqlite3',
   connection: {
     charset: 'utf8',
-    filename: path.join(__dirname, '../quizzimodo.sqlite')
+    filename: './server/db/quizzimodo.db'
   },
   useNullAsDefault: true
 });
 
 var Schema = require('./schema.js');
-var sequence = require('when/sequence');
-var _ = require('lodash');
+var Demo = require('./demo.js');
 
-function createTable(tableName) {
+var dropTables = () => {
+  var tableNames = _.keys(Schema);
+  var tables = _.map(tableNames, (tableName) => () => knex.schema.dropTableIfExists(tableName));
+  return sequence(tables);
+};
+
+var createTable = (tableName) => {
   return knex.schema.createTableIfNotExists(tableName, function (table) {
     var column;
     var columnKeys = _.keys(Schema[tableName]);
@@ -58,25 +65,32 @@ function createTable(tableName) {
   });
 }
 
-function createTables () {
-  var tables = [];
+var createTables = () => {
   var tableNames = _.keys(Schema);
-  tables = _.map(tableNames, function (tableName) {
-    return function () {
-      return createTable(tableName);
-    };
-  });
+  var tables = _.map(tableNames, (tableName) => () => createTable(tableName));
   return sequence(tables);
+};
+
+var importTableRecords = (tableName, records) => knex(tableName).insert(records);
+
+var importDemo = () => {
+  var demoData = _.map(Demo, (tableRecords) => () => importTableRecords(tableRecords.table, tableRecords.records));
+  return sequence(demoData);
 }
 
-createTables()
-.then(function() {
-  console.log('Tables created!');
+dropTables()
+.then(() => {
+  console.log('Tables dropped!');
+  createTables()
+  .then(() => {
+    console.log('Tables created!');
+    importDemo()
+    .then(() => console.log('Demo data imported!'))
+    .catch((error) => { throw error });
+  })
+  .catch((error) => { throw error });
 })
-.catch(function (error) {
-  throw error;
-});
-
+.catch((error) => { throw error });
 
 var Bookshelf = require('bookshelf')(knex);
 module.exports = Bookshelf;
