@@ -94,11 +94,11 @@ angular.module('quizzimodo', [
         'question@makeQuiz': {
           templateUrl: '../views/question.html',
           controller: 'QuizController'
-        },
-        'answers@makeQuiz': {
-          templateUrl: '../views/answers.html',
-          controller: 'QuizController'
         }
+        // 'answers@makeQuiz': {
+        //   templateUrl: '../views/answers.html',
+        //   controller: 'QuizController'
+        // }
       }
     })
     .state('results', {

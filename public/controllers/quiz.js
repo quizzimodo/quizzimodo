@@ -1,28 +1,31 @@
 angular.module('quizzimodo.quiz', [])
 
-.controller('QuizController', function($scope, $location, Quiz, $rootScope) {
-	
-  $scope.title = 'Calculus Craze';
-  $scope.questions = [{question: 'What is the derivative of sin(2x)?', answers: ['-2sin2x', '-2cos2x', '2cos2x', '2sin2x']}, 
-  {question: 'What is the integral of 2cos(2x)?', answers: ['sin2x', 'cos2x', '-cos2x', '-sin2x']}, 
-  {question: 'Which answer is the equivalent of ln(x)?', answers: ['log10(x)', 'e^x', 'log(x)', '10log(x)']}];
-  
-  $scope.answers = {};
+.controller('QuizController', function($scope, $location, Quiz, $rootScope) {	 
+  $scope.questions = [];
 
-  $scope.submit = function(){
-  	console.log("These are the answers", $scope.answers);
-    $location.path('/results');
-  }
+  $scope.addQuestion = function() {
+    var correctAnswer = $('input[name=answerRadio]:checked', '#answerForm').val();
+    var answerValues = [false, false, false, false];
+    answerValues[correctAnswer] = true;
+    
+    $scope.questions.push({
+      question: $scope.quiz.questions 
+      // answer_options: [
+      //   {$scope.quiz.answers0: answerValues[0]},
+      //   {$scope.quiz.answers1: answerValues[1]},
+      //   {$scope.quiz.answers2: answerValues[2]},
+      //   {$scope.quiz.answers3: answerValues[3]}
+      // ]
+    });
+    // clearFields();
+    console.log('$scope.questions = ', $scope.questions);
+  };
 
-  console.log('This is the $scope.user', $rootScope.user);
-  // $scope.getQuiz = function(id){
-  // 	Quiz.getQuiz(id).then(function(data){
-  //     $scope.title = data.quiz;
-  // 		$scope.questions = data.questions;
-  // 	}).catch(function(err){
-  // 		console.log(err);
-  // 	});
+  // function clearFields () {
+  //   $scope.questions = '';
+  //   $scope.quiz.answers0 = '';
+  //   $scope.quiz.answers1 = '';
+  //   $scope.quiz.answers2 = '';
+  //   $scope.quiz.answers3 = '';
   // };
-  // $scope.getQuiz();
-
 });

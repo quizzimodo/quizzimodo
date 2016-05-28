@@ -1,6 +1,14 @@
 <div id="question">
   <form>
-    Question: <input type="text" ng-model="quiz.quiz" /><i class="material-icons">mode_edit</i><i class="material-icons">delete_forever</i><br /><br>
+    Question: <input type="text" ng-model="quiz.questions" /><br /><br>
   </form>
-  <div ui-view="answers"></div>
-</div>
+  <div id="answers">
+    <form id="answerForm">
+    Mark the correct answer:
+      <br>
+      <input type="radio" name="answerRadio" value="0"> Answer 1: <input type="text" ng-model="quiz.answers0" /><br />
+      <input type="radio" name="answerRadio" value="1"> Answer 2: <input type="text" ng-model="quiz.answers1" /><br />
+      <input type="radio" name="answerRadio" value="2"> Answer 3: <input type="text" ng-model="quiz.answers2" /><br />
+      <input type="radio" name="answerRadio" value="3"> Answer 4: <input type="text" ng-model="quiz.answers3" /><br />
+    </form>
+  </div></div>
