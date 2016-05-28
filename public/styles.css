@@ -3,10 +3,8 @@ body {
   margin:0;
   padding:0;
   height:100%;
-}
-body {
-    background-image: url("assets/chalkboard.jpg");
-    background-size: 100% auto;
+  background-image: url("assets/chalkboard.jpg");
+  background-size: 100% auto;
 }
 
 a {
@@ -154,8 +152,18 @@ a {
   font-family: 'Handlee', cursive;
   color: white;
 }
+#make-quiz {
+  font-family: 'Handlee', cursive;
+  color: white;
+  height: 100%;
+}
 
 #topic-selector {
+  background-color: white;
+  font-family: 'Handlee', cursive;
+}
+
+#subtopic-selector {
   background-color: white;
   font-family: 'Handlee', cursive;
 }
@@ -166,7 +174,19 @@ a {
   height: 400px;
   width: 800px;
 }
-
+.question-setup {
+  height: 100%;
+  font-size: 2vw;
+}
+#answer-setup {
+  background-color: dodgerblue;
+}
+#quiz-setup {
+  background-color: green;
+}
+#all-questions {
+  background-color: pink;
+}
 .quiz-card {
   min-height: 150px;
 }
