@@ -21,9 +21,9 @@ module.exports = {
     id: {type: 'increments', nullable: false, primary: true},
     subtopic_id: {type: 'integer', nullable: false, references: 'subtopic.id'},
     quiz: {type: 'string', nullable: false},
-    description: {type: 'text', nullable: false},
+    details: {type: 'text', nullable: true},
     public: {type: 'boolean', nullable: false},
-    start: {type: 'dateTime', nulllable: true},
+    start: {type: 'dateTime', nullable: true},
     end: {type: 'dateTime', nullable: true},
     active: {type: 'boolean', nullable: false, defaultTo: true}
   },
