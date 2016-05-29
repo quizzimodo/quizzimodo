@@ -22,7 +22,7 @@ module.exports = {
     subtopic_id: {type: 'integer', nullable: false, references: 'subtopic.id'},
     quiz: {type: 'string', nullable: false},
     details: {type: 'text', nullable: true},
-    public: {type: 'boolean', nullable: false},
+    public: {type: 'boolean', nullable: false, defaultTo: false},
     start: {type: 'dateTime', nullable: true},
     end: {type: 'dateTime', nullable: true},
     created_by: {type: 'integer', nullable: false, references: 'user.id'},
@@ -49,9 +49,9 @@ module.exports = {
   },
   user_answer: {
     id: {type: 'increments', nullable: false, primary: true},
+    attempt_id: {type: 'integer', nullable: false, references: 'attempt.id'},
     question_id: {type: 'integer', nullable: false, references: 'question.id'},
-    answer_option_id: {type: 'integer', nullable: false, references: 'answer_option.id'},
-    attempt_id: {type: 'integer', nullable: false, references: 'attempt.id'}
+    answer_option_id: {type: 'integer', nullable: false, references: 'answer_option.id'}
   },
   invitee: {
     id: {type: 'increments', nullable: false, primary: true},
