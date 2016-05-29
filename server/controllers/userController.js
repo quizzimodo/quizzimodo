@@ -59,7 +59,7 @@ module.exports = {
     )
     .catch((err) => next(err))
   ,
-  signin: (req, res, next) =>
+  signin: (req, res, next) => 
     User.forge({username: req.body.username})
     .fetch()
     .then((user) => {
@@ -70,14 +70,14 @@ module.exports = {
         .then((isMatch) => {
           if (isMatch) {
             var expires = new Date().addHours(1);
-            user.token = jwt.encode({iss: user.id, exp: expires}, 'secret');
-            res.json({error: false, data: user});
+            var token = jwt.encode({iss: user.id, exp: expires}, 'secret');
+            res.json({error: false, data: user, token: token});
           } else
             next(new Error('Invalid password'));
         })
         .catch((err) => next(err));
     })
-    .catch((err) => next(err))
+    .catch((err) => next(err))  
 };
 
 Date.prototype.addHours = function(h) {

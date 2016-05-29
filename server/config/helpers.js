@@ -10,11 +10,13 @@ module.exports = {
     res.status(500).send({error: error.message});
   },
   decode: function (req, res, next) {
+    console.log('enter decode');
     var token = req.headers['x-access-token'];
-
-    if (token) {
+    console.log('token: ', token);
+    if (token && token !== 'undefined') {
+      console.log('has token?');
       var decoded = jwt.decode(token, 'secret');
-      
+      console.log('decoded: ', decoded);
       if (decoded.exp <= Date.now()) {
         res.end('Access token has expired', 400);
       }
@@ -27,6 +29,7 @@ module.exports = {
       })
       .catch((err) => next(err));
     } else {
+      console.log('exit decode');
       next();
     }
   },
