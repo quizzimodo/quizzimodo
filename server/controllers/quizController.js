@@ -8,9 +8,9 @@ module.exports = {
     .then((quiz) => res.json({error: false, data: quiz}))
     .catch((err) => next(err))
   ,
-  deleteQuiz: (req, res, next) =>
+  deleteQuiz: (req, res, next) => 
     Quiz.forge({id: req.params.quiz_id})
-    .fetch()
+    .fetch({require: true})
     .then((quiz) =>
       quiz.save({active: false})
       .then((quiz) => res.json({error: false, data: {message: 'Quiz successfully deleted'}}))
@@ -20,7 +20,8 @@ module.exports = {
   ,
   getQuiz: (req, res, next) =>
     Quiz.forge({id: req.params.quiz_id})
-    .fetch()
+    // .query((qb) => qb.)
+    .fetch({require: true})
     .then((quiz) => res.json({error: false, data: quiz}))
     .catch((err) => next(err))
   , 
@@ -32,7 +33,7 @@ module.exports = {
   ,
   updateQuiz: (req, res, next) =>
     Quiz.forge({id: req.params.quiz_id})
-    .fetch()
+    .fetch({require: true})
     .then((quiz) =>
       quiz.save(req.body)
       .then((quiz) => res.json({error: false, message: 'Quiz updated successfully'}))
