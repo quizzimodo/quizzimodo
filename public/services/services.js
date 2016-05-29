@@ -52,21 +52,21 @@ angular.module('quizzimodo.services', [])
     });
   };
 
-  var getQuiz = function(userID, quizID) {
+  var getQuiz = function(quizID) {
     return $http({
       method: 'GET',
-      url: '/api/quizzes' + quizID
+      url: '/api/quizzes/' + quizID
     })
     .then(function(resp) {
       return resp.data
     });
   };
 
-  var postResults = function(userID, quizID, questions) {
+  var postResults = function(quizID, questions) {
     return $http({
       method: 'POST',
       url: '/api/submit',
-      data: {userID: userID, quizID: quizID, questions: questions}
+      data: {quizID: quizID, questions: questions}
     })
     .then(function(resp) {
       return resp.data

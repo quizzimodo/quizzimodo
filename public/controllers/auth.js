@@ -33,12 +33,12 @@ angular.module('quizzimodo.auth', [])
   $scope.signin = function() {
     Auth.signin($scope.user)
     .then(function (data) {
-      console.log(data);
       $window.localStorage.setItem('com.quizzimodo', data.token);
-      $rootScope.user = data.user;
+      $rootScope.userID = data.data.id;
       $location.path('/main');
     })
     .catch(function(error) {
+      $scope.loginError = 'Incorrect username or password';
       console.error(error);
     });
   };
@@ -47,10 +47,11 @@ angular.module('quizzimodo.auth', [])
     Auth.signup($scope.user)
     .then(function(user) {
       $window.localStorage.setItem('com.quizzimodo', user.token);
-      $scope.user = user;
+      $rootScope.userID = user.data.id;
       $location.path('/main');
     })
     .catch(function(error) {
+      $scope.signupError = 'User already exists';
       console.error(error);
     });
   };
