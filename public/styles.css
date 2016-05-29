@@ -10,6 +10,7 @@ body {
 a {
   text-decoration: none;
 }
+
 @font-face {
     font-family: Sketchy;
     src: url(assets/Sketchy.ttf);
@@ -194,14 +195,36 @@ a {
 }
 
 #answer-selector {
-  overflow: auto;
+
   background-color: transparent;
-  height: 475px;
+
   width: 800px;
 }
 
 #quiz-selector md-menu-content {
   width: 50px;
+}
+
+#results {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Sketchy';
+  color: white;
+  font-size: 20px;
+}
+
+.results-btns {
+  background-color: transparent;
+  color: white;
+  font-family: 'Sketchy';
+  border-radius: 5px;
+  width: 120px;
+  height: 75px;
+  margin: 10px;
+}
+
+.results-btns a:visited {
+  color: white;
 }
 
 .question-setup {
