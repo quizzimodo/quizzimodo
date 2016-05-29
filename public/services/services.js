@@ -73,10 +73,22 @@ angular.module('quizzimodo.services', [])
     });
   };
 
+  var postQuiz = function(quiz) {
+    return $http({
+      method: 'POST',
+      url: '/api/quizzes',
+      data: quiz 
+    })
+    .then(function(resp) {
+      return resp.data
+    });
+  };
+
   return {
     getQuizzes: getQuizzes,
     getQuiz: getQuiz,
-    postResults: postResults
+    postResults: postResults,
+    postQuiz: postQuiz
   }
 });
 
