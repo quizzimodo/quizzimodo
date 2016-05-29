@@ -5,6 +5,7 @@ angular.module('quizzimodo', [
   'quizzimodo.quiz',
   'quizzimodo.take',
   'quizzimodo.user',
+  'quizzimodo.results',
   'ngMaterial',
   'ngMessages',
   'ui.router'
@@ -110,7 +111,7 @@ angular.module('quizzimodo', [
         'menu@results': menuView,
         '': {
           templateUrl: '../views/results.html',
-          controller: 'QuizController'
+          controller: 'ResultsController'
         } 
       }
     });
