@@ -2,7 +2,10 @@ angular.module('quizzimodo.quiz', [])
 
 .controller('QuizController', function($scope, $location, Quiz, $rootScope) {	 
 
-  $scope.questions = [];
+  $scope.quiz = {
+    questions: []
+  }
+
   $scope.question = {question: '', answers: [{}, {}, {}, {}]};
 
   function checkFields () {
@@ -13,12 +16,12 @@ angular.module('quizzimodo.quiz', [])
   };
 
   $scope.addQuestion = function() {
-    if(checkFields()) {
-      $scope.questions.push($scope.question);
+    //if(checkFields()) {
+      $scope.quiz.questions.push($scope.question);
       $scope.question = {question: '', answers: [{}, {}, {}, {}]};
-    } else {
-      alert('Please fill out the question and answer fields, and select a correct answer');
-    }
+    // } else {
+    //   alert('Please fill out the question and answer fields, and select a correct answer');
+    // }
   };
 
   $scope.editQuestion = function() {
@@ -30,10 +33,11 @@ angular.module('quizzimodo.quiz', [])
   }
 
   $scope.submitQuiz = function() {
-    if(checkFields()) { 
-      $scope.questions.title = $scope.quiz.quiz;
-      $scope.questions.details = $scope.quiz.details;
-      Quiz.postQuiz($scope.questions)
+    //if(checkFields()) { 
+      
+      $scope.quiz.quiz = $scope.quizName;
+      $scope.quiz.details = $scope.quizDetails;
+      Quiz.postQuiz($scope.quiz)
       .then(function() {
         alert('Quiz created!');
         $location.path('/main');
@@ -41,8 +45,8 @@ angular.module('quizzimodo.quiz', [])
       .catch(function(error) {
         console.error(error);
       });
-    } else {
-      alert('Please fill out the question and answer fields, and select a correct answer');
-    }
+    // } else {
+    //   alert('Please fill out the question and answer fields, and select a correct answer');
+    // }
   }
 });

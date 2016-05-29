@@ -4,7 +4,7 @@ var quizController = require('../controllers/quizController.js');
 module.exports = function (app) {
   app.all(helpers.requireAuth);
 
-  app.route('/:user_id')
+  app.route('/')
     .get(quizController.getQuizzes)
     .post(quizController.createQuiz);
   
