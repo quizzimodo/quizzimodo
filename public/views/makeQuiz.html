@@ -24,8 +24,8 @@
     <md-content id="quiz-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left center">
        <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
         <form>
-           Quiz Title: <input type="text" ng-model="quiz.quiz" /><br />
-           Quiz Details: <input type="text" ng-model="quiz.details" /><br />
+           Quiz Title: <input type="text" ng-model="quizName" /><br />
+           Quiz Details: <input type="text" ng-model="quizDetails" /><br />
         </form>
       </div>
     </md-content>
@@ -40,10 +40,13 @@
     <md-content id='all-questions' class="md-padding" layout-xs="column" layout="row" layout-align="left">
         <div layout="column" layout-align="left">
           <div>All Questions<br><br></div>
-          <div ng-repeat="question in questions">
-            {{question}}
-            <i class="material-icons">mode_edit</i>
-            <i class="material-icons">delete_forever</i>
+          <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
+            <ul ng-repeat="question in questions">
+              <li>{{question}}
+                <i class="material-icons">mode_edit</i>
+                <i class="material-icons">delete_forever</i>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
