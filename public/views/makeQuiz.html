@@ -25,13 +25,12 @@
        <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
         <form>
            Quiz Title: <input type="text" ng-model="quiz.quiz" /><br />
-           Quiz Details: <input type="email" ng-model="quiz.details" /><br />
+           Quiz Details: <input type="text" ng-model="quiz.details" /><br />
         </form>
       </div>
     </md-content>
     <md-content id="answer-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left center" >
       <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
-
         <div ui-view="question"></div>
       </div>
     </md-content>
@@ -39,16 +38,18 @@
 
   <div layout="row" layout-align="none stretch" flex-xs="50" flex-gt-xs="50">
     <md-content id='all-questions' class="md-padding" layout-xs="column" layout="row" layout-align="left">
-       <div layout="column" layout-align="left">
-       <div>All Questions<br><br></div>
-       <div ng-repeat="question in questions">{{question.question}}<i class="material-icons">mode_edit</i><i class="material-icons">delete_forever</i></div>
+        <div layout="column" layout-align="left">
+          <div>All Questions<br><br></div>
+          <div ng-repeat="question in questions">
+            {{question}}
+            <i class="material-icons">mode_edit</i>
+            <i class="material-icons">delete_forever</i>
+          </div>
+        </div>
       </div>
     </md-content>
   </div>
 
   </div>
-    <section layout="row" layout-sm="column" layout-wrap="">
-      <md-button class="md-raised">Save Quiz</md-button>
-    <section layout="row" layout-sm="column" layout-wrap="">
-      <md-button class="md-raised" ng-click="addQuestion()">Add a Question</md-button>  
+    
 </div>

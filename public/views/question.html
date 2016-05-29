@@ -1,14 +1,17 @@
 <div id="question">
   <form>
-    Question: <input type="text" ng-model="quiz.questions" /><br /><br>
+    Question: <input type="text" ng-model="question.question" /><br /><br>
   </form>
   <div id="answers">
     <form id="answerForm">
     Mark the correct answer:
       <br>
-      <input type="radio" name="answerRadio" value="0"> Answer 1: <input type="text" ng-model="quiz.answers0" /><br />
-      <input type="radio" name="answerRadio" value="1"> Answer 2: <input type="text" ng-model="quiz.answers1" /><br />
-      <input type="radio" name="answerRadio" value="2"> Answer 3: <input type="text" ng-model="quiz.answers2" /><br />
-      <input type="radio" name="answerRadio" value="3"> Answer 4: <input type="text" ng-model="quiz.answers3" /><br />
+      <div ng-repeat="answer in question.answers">
+        <input type="radio" name="answerRadio" ng-value=true ng-model="answer.correct"> Answer {{$index + 1}}: <input type="text" ng-model="question.answers[$index].answer" /><br />
+      </div>
+        <section layout="row" layout-sm="column" layout-wrap="">
+        <md-button class="md-raised">Save Quiz</md-button>
+        <section layout="row" layout-sm="column" layout-wrap="">
+        <md-button class="md-raised" ng-click="addQuestion()">Add a Question</md-button>   
     </form>
   </div></div>
