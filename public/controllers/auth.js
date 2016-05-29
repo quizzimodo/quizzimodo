@@ -32,9 +32,10 @@ angular.module('quizzimodo.auth', [])
   
   $scope.signin = function() {
     Auth.signin($scope.user)
-    .then(function (user) {
-      $window.localStorage.setItem('com.quizzimodo', user.token);
-      $rootScope.user = user;
+    .then(function (data) {
+      console.log(data);
+      $window.localStorage.setItem('com.quizzimodo', data.token);
+      $rootScope.user = data.user;
       $location.path('/main');
     })
     .catch(function(error) {

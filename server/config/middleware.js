@@ -9,6 +9,7 @@ module.exports = function (app, express) {
   var userRouter = express.Router();
   var quizRouter = express.Router();
 
+  app.use(helpers.decode);
   app.use('/api/users', userRouter);
   app.use('/api/quizzes', quizRouter);
 
