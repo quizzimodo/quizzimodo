@@ -115,9 +115,7 @@ angular.module('quizzimodo', [
         } 
       }
     });
-
-
-
+    
   $httpProvider.interceptors.push('AttachTokens');
 })
 
