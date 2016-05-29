@@ -19,7 +19,8 @@ module.exports = {
         })
         .save()
         .then((user) => {
-          user.token = jwt.encode(user, 'secret');
+          var expires = new Date().addHours(1);
+          user.token = jwt.encode({iss: user.id, exp: expires}, 'secret');
           res.json({error: false, data: user});
         })
         .catch((err) => next(err));
@@ -68,7 +69,8 @@ module.exports = {
         user.comparePasswords(req.body.password)
         .then((isMatch) => {
           if (isMatch) {
-            user.token = jwt.encode(user, 'secret');
+            var expires = new Date().addHours(1);
+            user.token = jwt.encode({iss: user.id, exp: expires}, 'secret');
             res.json({error: false, data: user});
           } else
             next(new Error('Invalid password'));
@@ -76,4 +78,9 @@ module.exports = {
         .catch((err) => next(err));
     })
     .catch((err) => next(err))
+};
+
+Date.prototype.addHours = function(h) {
+  this.setHours(this.getHours() + h);
+  return this;
 };
