@@ -1,12 +1,12 @@
 var bookshelf = require('../db/db_config/db_config.js');
-var Question = require('./question.js');
-var UserAnswer = require('./user_answer.js');
+require('./question.js');
+require('./user_answer.js');
 
-var Answer = bookshelf.Model.extend({
+var AnswerOption = bookshelf.Model.extend({
   tableName: 'answer_option',
   hasTimestamps: true,
-  user_answers: () => this.hasMany(UserAnswer),
-  question: () => this.belongsTo(Question)
+  question: function () { return this.belongsTo('Question') },
+  user_answers: function () { return this.hasMany('UserAnswer') }
 });
 
-module.exports = Answer;
+module.exports = bookshelf.model('AnswerOption', AnswerOption);

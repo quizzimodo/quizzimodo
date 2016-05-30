@@ -1,15 +1,15 @@
 var bookshelf = require('../db/db_config/db_config.js');
 var bcrypt = require('bcrypt-nodejs');
-var Quiz = require('./quiz.js');
-var Invitee = require('./invitee.js');
-var Attempt = require('./attempt.js');
+require('./quiz.js');
+require('./invitee.js');
+require('./attempt.js');
 
 var User = bookshelf.Model.extend({
   tableName: 'user',
   hasTimestamps: true,
-  quizzes: () => this.hasMany(Quiz),
-  invitees: () => this.hasMany(Invitee),
-  attempts: () => this.hasMany(Attempts),
+  quizzes: function () { return this.hasMany('Quiz') },
+  invitees: function () { return this.hasMany('Invitee') },
+  attempts: function () { return this.hasMany('Attempt') },
   initialize: function() {
     this.on('creating', this.hashPassword, this);
   },
@@ -34,4 +34,4 @@ var User = bookshelf.Model.extend({
 });
 
 
-module.exports = User;
+module.exports = bookshelf.model('User', User);

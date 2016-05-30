@@ -1,3 +1,4 @@
+var Topic = require('../models/topic.js');
 var User = require('../models/user.js');
 var Users = require('../collections/users.js');
 var jwt = require('jwt-simple');
@@ -20,8 +21,15 @@ module.exports = {
         .save()
         .then((user) => {
           var expires = new Date().addHours(1);
-          user.token = jwt.encode({iss: user.id, exp: expires}, 'secret');
-          res.json({error: false, data: user});
+          var token = jwt.encode({iss: user.id, exp: expires}, 'secret');
+          var data = {error: false, data: user, token: token};
+          Topic.forge()
+          .fetch({withRelated: ['subtopics']})
+          .then((topics) => {
+            data.topics = topics;
+            res.json(data);
+          })
+          .catch((err) => next(err));
         })
         .catch((err) => next(err));
     })
@@ -71,7 +79,14 @@ module.exports = {
           if (isMatch) {
             var expires = new Date().addHours(1);
             var token = jwt.encode({iss: user.id, exp: expires}, 'secret');
-            res.json({error: false, data: user, token: token});
+            var data = {error: false, data: user, token: token};
+            Topic.forge()
+            .fetch({withRelated: ['subtopics']})
+            .then((topics) => {
+              data.topics = topics;
+              res.json(data);
+            })
+            .catch((err) => next(err));
           } else
             next(new Error('Invalid password'));
         })

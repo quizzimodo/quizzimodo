@@ -50,7 +50,6 @@ module.exports = {
   user_answer: {
     id: {type: 'increments', nullable: false, primary: true},
     attempt_id: {type: 'integer', nullable: false, references: 'attempt.id'},
-    question_id: {type: 'integer', nullable: false, references: 'question.id'},
     answer_option_id: {type: 'integer', nullable: false, references: 'answer_option.id'}
   },
   invitee: {
