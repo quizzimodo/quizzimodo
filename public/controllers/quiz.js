@@ -64,6 +64,12 @@ angular.module('quizzimodo.quiz', [])
       
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
+      if ($('#publicCheckbox').is(':checked')) {
+        $scope.quiz.public = true;
+      }
+
+      console.log($scope.quiz.public);
+
       Quiz.postQuiz($scope.quiz)
       .then(function() {
         alert('Quiz created!');
