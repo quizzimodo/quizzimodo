@@ -233,6 +233,7 @@ a {
 }
 #answer-setup {
   background-color: dodgerblue;
+  layout-align: left;
 }
 #quiz-setup {
   background-color: green;

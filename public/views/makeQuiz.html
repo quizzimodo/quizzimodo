@@ -29,22 +29,43 @@
         </form>
       </div>
     </md-content>
-    <md-content id="answer-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left center" >
-      <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
-        <div ui-view="question"></div>
+    <md-content id="answer-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left" >
+      <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left">
+       </div>
+  
+  <div id="question">
+  <form>
+    Question: <input type="text" ng-model="question.question" /><br /><br>
+  </form>
+  <div id="answers">
+    <form id="answerForm">
+    Mark the correct answer:
+      <br>
+      <div ng-repeat="answer in question.answers">
+        <input type="radio" name="answerRadio" ng-value=true ng-model="answer.correct"> Answer {{$index + 1}}: <input type="text" ng-model="question.answers[$index].answer" /><br />
+      </div>
+        <section layout="row" layout-sm="column" layout-wrap="">
+        <md-button class="md-raised" ng-click="addQuestion()">Add a Question</md-button>   
+        <section layout="row" layout-sm="column" layout-wrap="">
+        <md-button class="md-raised" ng-click="updateQuestion()">Update Question</md-button>   
+        <section layout="row" layout-sm="column" layout-wrap="">
+        <md-button class="md-raised" ng-click="submitQuiz(quiz.quiz, quiz.details)">Submit Quiz</md-button>
+    </form>
+  </div></div>
       </div>
     </md-content>
-  </div>
+  
 
   <div layout="row" layout-align="none stretch" flex-xs="50" flex-gt-xs="50">
     <md-content id='all-questions' class="md-padding" layout-xs="column" layout="row" layout-align="left">
         <div layout="column" layout-align="left">
+          
           <div>All Questions<br><br></div>
           <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
-            <ul ng-repeat="question in questions">
-              <li>{{question}}
-                <i class="material-icons">mode_edit</i>
-                <i class="material-icons">delete_forever</i>
+            <ul ng-repeat="question in quiz.questions">
+              <li>{{question.question}}
+                <button ng-click="editQuestion($index)"><i class="material-icons">mode_edit</i></button>
+                <button ng-click="deleteQuestion($index)"><i class="material-icons">delete_forever</i></button>
               </li>
             </ul>
           </div>

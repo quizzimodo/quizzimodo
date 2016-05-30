@@ -24,11 +24,33 @@ angular.module('quizzimodo.quiz', [])
     // }
   };
 
-  $scope.editQuestion = function() {
-    $scope.currentQuestion = selectedquestion;
+  $scope.editQuestion = function(index) {
+    $scope.index = index;
+    $scope.question.question = this.question.question;
+    $scope.question.answers[0].answer = this.question.answers[0].answer;
+    $scope.question.answers[1].answer = this.question.answers[1].answer;
+    $scope.question.answers[2].answer = this.question.answers[2].answer;
+    $scope.question.answers[3].answer = this.question.answers[3].answer;
+
   }
 
-  $scope.saveQuestion = function() {
+  $scope.deleteQuestion = function() {
+    console.log($scope.question.answers[0].answer);
+    console.log(this.question.answers[0].answer);
+
+  }
+
+  $scope.updateQuestion = function(index) {
+    //$scope.question.question = $scope.quiz.questions[index].question
+    $scope.quiz.questions[$scope.index].question = $scope.question.question;
+    $scope.quiz.questions[$scope.index].answers[0].answer = $scope.question.answers[0].answer;
+    $scope.quiz.questions[$scope.index].answers[1].answer = $scope.question.answers[1].answer;
+    $scope.quiz.questions[$scope.index].answers[2].answer = $scope.question.answers[2].answer;
+    $scope.quiz.questions[$scope.index].answers[3].answer = $scope.question.answers[3].answer;
+    
+    console.log($scope.quiz.questions[index]);
+
+
 
   }
 
