@@ -22,7 +22,7 @@ module.exports = {
   ,
   getQuiz: (req, res, next) =>
     Quiz.forge({id: req.params.quiz_id})
-    .fetch({require: true, withRelated: ['questions.answer_options']})
+    .fetch({require: true, withRelated: ['questions.answer_options', 'attempts.user_answers']})
     .then((quiz) => {
       console.log("quiz.related('questions'): ", quiz.related('questions'));
       res.json({error: false, data: quiz})
