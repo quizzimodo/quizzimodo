@@ -1,10 +1,10 @@
 var bookshelf = require('../db/db_config/db_config.js');
-var Subtopic = require('./subtopic.js');
+require('./subtopic.js');
 
 var Topic = bookshelf.Model.extend({
   tableName: 'topic',
   hasTimestamps: true,
-  subtopics: () => this.hasMany(Subtopic)
+  subtopics: function () { return this.hasMany('Subtopic') }
 });
 
-module.exports = Topic;
+module.exports = bookshelf.model('Topic', Topic);

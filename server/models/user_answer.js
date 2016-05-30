@@ -1,14 +1,14 @@
 var bookshelf = require('../db/db_config/db_config.js');
-var Quiz = require('./quiz.js');
-var AnswerOption = require('./answer_option.js');
-var Attempt = require('./attempt.js');
+require('./question.js');
+require('./answer_option.js');
+require('./attempt.js');
 
 var UserAnswer = bookshelf.Model.extend({
   tableName: 'user_answer',
   hasTimestamps: true,
-  quiz: () => this.belongsTo(Quiz),
-  answer_option: () => this.belongsTo(AnswerOption),
-  attempt: () => this.belongsTo(Attempt)
+  question: function () { return this.belongsTo('Question') },
+  answer_option: function () { return this.belongsTo('AnswerOption') },
+  attempt: function () { return this.belongsTo('Attempt') }
 });
 
-module.exports = UserAnswer;
+module.exports = bookshelf.model('UserAnswer', UserAnswer);

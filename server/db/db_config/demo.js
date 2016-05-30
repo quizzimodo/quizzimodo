@@ -205,6 +205,25 @@ var DemoData = [
       {question_id: 8, answer: `4,4,4,4`, correct: true},
       {question_id: 8, answer: `1,2,3,4`, correct: false}
     ]
+  },
+  {
+    table: 'attempt',
+    records: [
+      {quiz_id: 1, user_id: 1, pass_count: 4, fail_count: 4, result: 0.5}
+    ]
+  },
+  {
+    table: 'user_answer',
+    records: [
+      {attempt_id: 1, answer_option_id: 1},
+      {attempt_id: 1, answer_option_id: 6},
+      {attempt_id: 1, answer_option_id: 11},
+      {attempt_id: 1, answer_option_id: 14},
+      {attempt_id: 1, answer_option_id: 17},
+      {attempt_id: 1, answer_option_id: 21},
+      {attempt_id: 1, answer_option_id: 25},
+      {attempt_id: 1, answer_option_id: 29}
+    ]
   }
 ];
 

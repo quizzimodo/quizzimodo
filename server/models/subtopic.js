@@ -1,12 +1,12 @@
 var bookshelf = require('../db/db_config/db_config.js');
-var Topic = require('./topic.js');
-var Quiz = require('./quiz.js');
+require('./topic.js');
+require('./quiz.js');
 
 var Subtopic = bookshelf.Model.extend({
   tableName: 'subtopic',
   hasTimestamps: true,
-  topic: function () { return this.belongsTo(Topic) },
-  quizzes: () => this.hasMany(Quiz)
+  topic: function () { return this.belongsTo('Topic') },
+  quizzes: function () { return this.hasMany('Quiz') }
 });
 
-module.exports = Subtopic;
+module.exports = bookshelf.model('Subtopic', Subtopic);
