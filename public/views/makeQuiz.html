@@ -2,22 +2,22 @@
     <h1>Make a quiz</h1>
 
   <md-input-container id="topic-selector">
-    <label>Select Topic</label>
-      <md-select ng-model="userTopic">
-        <md-option ng-repeat="topic in topics" value="{{topic}}">
-          {{topic}}
-        </md-option>
-      </md-select>
-  </md-input-container>
-  
-  <md-input-container id="subtopic-selector">
-    <label>Select Subtopic</label>
-      <md-select ng-model="userSubtopic">
-        <md-option ng-repeat="subtopic in subtopics" value="{{subtopic}}">
-          {{subtopic}}
-        </md-option>
-      </md-select>
-  </md-input-container>
+          <label>Select Topic</label>
+          <md-select ng-model="topicPick">
+            <md-option ng-repeat="topic in topics" value="{{$index}}">
+              {{topic.topicName}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container id="subtopic-selector">
+          <label>Select Topic</label>
+          <md-select ng-model="subtopicPick">
+            <md-option ng-repeat="subtopic in subTopics" value="{{$index}}">
+              {{subtopic}}
+            </md-option>
+          </md-select>
+        </md-input-container>
   <div class="question-setup" layout="row" layout-align="center stretch">
   
   <div layout="column" layout-align="center stretch">
