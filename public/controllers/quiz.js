@@ -16,6 +16,13 @@ angular.module('quizzimodo.quiz', [])
     return true;
   };
 
+  function clearFields() {
+    $scope.question.question = '';
+    for(var i = 0; i < $scope.question.answers.length; i++) {
+      $scope.question.answers[i].answer = '';
+    }
+  }
+
   $scope.addQuestion = function() {
     //if(checkFields()) {
       $scope.quiz.questions.push($scope.question);
@@ -28,26 +35,27 @@ angular.module('quizzimodo.quiz', [])
   $scope.editQuestion = function(index) {
     $scope.index = index;
     $scope.question.question = this.question.question;
-    $scope.question.answers[0].answer = this.question.answers[0].answer;
-    $scope.question.answers[1].answer = this.question.answers[1].answer;
-    $scope.question.answers[2].answer = this.question.answers[2].answer;
-    $scope.question.answers[3].answer = this.question.answers[3].answer;
+    for(var i = 0; i < $scope.question.answers.length; i++) {
+      $scope.question.answers[i].answer = this.question.answers[i].answer;
+      $scope.question.answers[i].correct = this.question.answers[i].correct;
+    }
     $scope.currentlyEditing = true;
-
   }
 
   $scope.deleteQuestion = function(index) {
     if(confirm("Are you sure you want to delete this question?")) {
       $scope.quiz.questions.splice(index, 1);
+      clearFields();
+      $scope.currentlyEditing = false;
     }
   }
 
   $scope.updateQuestion = function() {
     $scope.quiz.questions[$scope.index].question = $scope.question.question;
-    $scope.quiz.questions[$scope.index].answers[0].answer = $scope.question.answers[0].answer;
-    $scope.quiz.questions[$scope.index].answers[1].answer = $scope.question.answers[1].answer;
-    $scope.quiz.questions[$scope.index].answers[2].answer = $scope.question.answers[2].answer;
-    $scope.quiz.questions[$scope.index].answers[3].answer = $scope.question.answers[3].answer;
+    for(var i = 0; i < $scope.quiz.questions[$scope.index].answers.length; i++) {
+      $scope.quiz.questions[$scope.index].answers[i].answer = $scope.question.answers[i].answer;
+    }
+    clearFields();
     $scope.currentlyEditing = false;
   }
 
