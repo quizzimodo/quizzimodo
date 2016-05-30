@@ -5,6 +5,7 @@ angular.module('quizzimodo.quiz', [])
   $scope.quiz = {
     questions: []
   }
+  $scope.currentlyEditing = false;
 
   $scope.question = {question: '', answers: [{}, {}, {}, {}]};
 
@@ -31,27 +32,23 @@ angular.module('quizzimodo.quiz', [])
     $scope.question.answers[1].answer = this.question.answers[1].answer;
     $scope.question.answers[2].answer = this.question.answers[2].answer;
     $scope.question.answers[3].answer = this.question.answers[3].answer;
+    $scope.currentlyEditing = true;
 
   }
 
-  $scope.deleteQuestion = function() {
-    console.log($scope.question.answers[0].answer);
-    console.log(this.question.answers[0].answer);
-
+  $scope.deleteQuestion = function(index) {
+    if(confirm("Are you sure you want to delete this question?")) {
+      $scope.quiz.questions.splice(index, 1);
+    }
   }
 
-  $scope.updateQuestion = function(index) {
-    //$scope.question.question = $scope.quiz.questions[index].question
+  $scope.updateQuestion = function() {
     $scope.quiz.questions[$scope.index].question = $scope.question.question;
     $scope.quiz.questions[$scope.index].answers[0].answer = $scope.question.answers[0].answer;
     $scope.quiz.questions[$scope.index].answers[1].answer = $scope.question.answers[1].answer;
     $scope.quiz.questions[$scope.index].answers[2].answer = $scope.question.answers[2].answer;
     $scope.quiz.questions[$scope.index].answers[3].answer = $scope.question.answers[3].answer;
-    
-    console.log($scope.quiz.questions[index]);
-
-
-
+    $scope.currentlyEditing = false;
   }
 
   $scope.submitQuiz = function() {
