@@ -50,12 +50,14 @@
         <md-button class="md-raised" ng-show="currentlyEditing" ng-click="updateQuestion()">Update Question</md-button>
         <section layout="row" layout-sm="column" layout-wrap="">
         <md-button class="md-raised" ng-hide="currentlyEditing" ng-click="submitQuiz(quiz.quiz, quiz.details)">Submit Quiz</md-button>
+        <div>
+          Make quiz public? <input id="publicCheckbox" name="publicCheckbox" value="true" type="checkbox">
+        </div>
     </form>
   </div></div>
       </div>
     </md-content>
   
-
   <div layout="row" layout-align="none stretch" flex-xs="50" flex-gt-xs="50">
     <md-content id='all-questions' class="md-padding" layout-xs="column" layout="row" layout-align="left">
         <div layout="column" layout-align="left">
