@@ -40,9 +40,18 @@ angular.module('quizzimodo.services', [])
   }
 })
 
-.factory('Quiz', function($http) {
+.factory('Quiz', function($http, $location) {
+  var persistedData = {};
 
-  var getQuizzes = function(userID) {
+  var setData = function(data){
+    persistedData = data;
+  }
+
+  var getData = function(data){
+    return persistedData;
+  }
+
+  var getQuizzes = function() {
     return $http({
       method: 'GET',
       url: '/api/quizzes'
@@ -62,11 +71,11 @@ angular.module('quizzimodo.services', [])
     });
   };
 
-  var postResults = function(quizID, questions) {
+  var postResults = function(quizResult) {
     return $http({
       method: 'POST',
       url: '/api/submit',
-      data: {quizID: quizID, questions: questions}
+      data: quizResult
     })
     .then(function(resp) {
       return resp.data
@@ -88,7 +97,9 @@ angular.module('quizzimodo.services', [])
     getQuizzes: getQuizzes,
     getQuiz: getQuiz,
     postResults: postResults,
-    postQuiz: postQuiz
+    postQuiz: postQuiz,
+    setData: setData,
+    getData: getData
   }
 });
 
