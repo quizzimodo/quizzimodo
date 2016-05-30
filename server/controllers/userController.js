@@ -28,7 +28,7 @@ module.exports = {
     .catch((err) => next(err))
   ,
   deleteUser: (req, res, next) =>
-    User.forge({id: req.params.user_id})
+    User.forge({user_id: req.params.user_id})
     .fetch()
     .then((user) =>
       user.save({active: false})
@@ -38,7 +38,7 @@ module.exports = {
     .catch((err) => next(err))
   ,
   getUser: (req, res, next) =>
-    User.forge({id: req.params.user_id})
+    User.forge({user_id: req.params.user_id})
     .fetch()
     .then((user) => res.json({error: false, data: user}))
     .catch((err) => next(err))
@@ -50,7 +50,7 @@ module.exports = {
     .catch((err) => next(err))
   ,
   updateUser: (req, res, next) =>
-    User.forge({id: req.params.id})
+    User.forge({user_id: req.params.id})
     .fetch()
     .then((user) =>
       user.save(req.body)
