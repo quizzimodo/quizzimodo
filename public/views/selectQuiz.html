@@ -1,6 +1,6 @@
 <div id="select-quiz" layout="column" ng-cloak="" flex-offset="10" flex="70">
     <h1>Available Quizzes</h1>
-
+    <span class="error">{{ selectError }}</span>
    <md-input-container id="topic-selector">
         <label>Select Topic</label>
         <md-select ng-model="topicPick">
@@ -25,16 +25,15 @@
 	     <md-card class="quiz-card" ng-repeat="key in quizzes | filter:userTopic | filter:userSubtopic">
 	       <md-card-title>
 	         <md-card-title-text>
-	           <span class="md-headline">{{ key.name }}</span>
-	           <span class="md-subhead">{{ key.topic }}</span>
-	           <span class="md-subhead">[{{ key.subtopic }}]</span>
+	           <span class="md-headline">{{ key.quiz }}</span>
+	           <span class="md-subhead">{{ key.subtopic }}</span>
 	         </md-card-title-text>
 	         <md-card-title-media>
 	          <img src="{{image}}">
 	         </md-card-title-media>
 	       </md-card-title>
 	       <md-card-actions layout="row" layout-align="end center">
-	         <md-button ng-click="takeQuiz(key.id)">{{taken}}</md-button>
+	         <md-button ng-click="takeQuiz(key.id)">{{ taken }}</md-button>
 	         <md-menu md-position-mode="target-right target">
 	           <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
 	             <md-button class="md-raised" aria-label="Login">
@@ -43,7 +42,7 @@
 	           </md-button>
 	           <md-menu-content width="4">
 	             <md-menu-item class="md-padding" >
-	               {{key.details}}
+	               {{ key.details }}
 	             </md-menu-item>
 	           </md-menu-content>
 	         </md-menu>

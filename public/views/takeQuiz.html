@@ -1,35 +1,26 @@
 <div id="take-quiz" layout="column" ng-cloak="" flex-offset="10" flex="70">
-<h1>{{title}}</h1>
+  <h1>{{quiz.quiz}}</h1>
+  <h3>{{quiz.details}}</h3>
+  <span class="error">{{ loadError }}</span>
+
   <md-content id="answer-selector" class="md-padding" layout-xs="column" layout="row">
 	   <div flex-xs="" flex-gt-xs="90" layout="column" >
-	     <md-card class="answer-card" ng-repeat="key in questions">
+	     <md-card class="answer-card" ng-repeat="key in quiz.questions">
 	       <md-card-title>
 	         <md-card-title-text>
 	           <span class="md-headline">{{key.question}}}</span>
 	         </md-card-title-text>
 	       </md-card-title>
-	       <br>
 	       <div class="md-padding">
 		  <form>
-		    <input type="radio" ng-model="answers[$index]" value="{{key.answers[0]}}">
-		    {{key.answers[0]}}
-		    <br>
-		    <br>
-            <input type="radio" ng-model="answers[$index]" value="{{key.answers[1]}}">
-            {{key.answers[1]}}
-            <br>
-            <br>
-            <input type="radio" ng-model="answers[$index]" value="{{key.answers[2]}}">
-            {{key.answers[2]}}
-            <br>
-            <br>
-            <input type="radio" ng-model="answers[$index]" value="{{key.answers[3]}}">
-            {{key.answers[3]}}
-            <br>
-            <br>
+		    <div ng-repeat="answer in key.answers">
+		      <input id="$index" type="radio" ng-model="key.userAnswer" value="{{key.answers[$index].id}}">
+		      {{key.answers[$index].answer}}
+		    </div>
 		  </form>
 		  </div>
 	     </md-card>
+	     <span class="error">{{ submitError }}</span>
 	     <md-button class="md-raised md-primary" ng-click="submit()">Submit Quiz</md-button>
 	   </div>
   </md-content>
