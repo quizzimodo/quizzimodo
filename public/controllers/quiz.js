@@ -2,6 +2,21 @@ angular.module('quizzimodo.quiz', [])
 
 .controller('QuizController', function($scope, $location, Quiz, $rootScope) {	 
 
+  $scope.topics = [{topicName: 'Science', sub_topics: ['Physics', 'Biology', 'Chemistry', 'Astronomy']}, 
+  {topicName: 'Math', sub_topics: ['Algebra', 'Calculus', 'Trigonometry', 'Geometry']}, 
+  {topicName: 'Tech', sub_topics: ['HTML', 'CSS', 'Javascript', 'Ruby', 'Python']}, 
+  {topicName: 'Foreign Languages', sub_topics: ['Spanish', 'French', 'Italian', 'German']}, 
+  {topicName: 'English', sub_topics: ['Literature', 'Grammar', 'Spelling', 'Famous Authors']}];
+
+  $scope.$watch('topicPick', function(x){
+    $scope.userTopic = $scope.topics[x]['topicName'];
+    $scope.subTopics = $scope.topics[x]['sub_topics'];
+  });
+
+  $scope.$watch('subtopicPick', function(y){
+    $scope.userSubtopic = $scope.subTopics[y];
+  });
+
   $scope.quiz = {
     questions: []
   }
@@ -61,7 +76,7 @@ angular.module('quizzimodo.quiz', [])
 
   $scope.submitQuiz = function() {
     //if(checkFields()) { 
-      
+      $scope.quiz.subtopic_id = $scope.subtopicPick;
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
       if ($('#publicCheckbox').is(':checked')) {
