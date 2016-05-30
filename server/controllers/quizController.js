@@ -1,5 +1,7 @@
 var Quiz = require('../models/quiz.js');
 var Quizzes = require('../collections/quizzes.js');
+var Questions = require('../collections/questions.js');
+
 
 module.exports = {
   createQuiz: (req, res, next) =>
@@ -9,7 +11,7 @@ module.exports = {
     .catch((err) => next(err))
   ,
   deleteQuiz: (req, res, next) => 
-    Quiz.forge({id: req.params.quiz_id})
+    Quiz.forge({quiz_id: req.params.quiz_id})
     .fetch({require: true})
     .then((quiz) =>
       quiz.save({active: false})
@@ -20,9 +22,11 @@ module.exports = {
   ,
   getQuiz: (req, res, next) =>
     Quiz.forge({id: req.params.quiz_id})
-    // .query((qb) => qb.)
-    .fetch({require: true})
-    .then((quiz) => res.json({error: false, data: quiz}))
+    .fetch({require: true, withRelated: ['questions']})
+    .then((quiz) => {
+      console.log(quiz);
+      res.json({error: false, data: quiz})
+    })
     .catch((err) => next(err))
   , 
   getQuizzes: (req, res, next) =>
@@ -32,7 +36,7 @@ module.exports = {
     .catch((err) => next(err))
   ,
   updateQuiz: (req, res, next) =>
-    Quiz.forge({id: req.params.quiz_id})
+    Quiz.forge({quiz_id: req.params.quiz_id})
     .fetch({require: true})
     .then((quiz) =>
       quiz.save(req.body)
@@ -40,4 +44,8 @@ module.exports = {
       .catch((err) => next(err))
     )
     .catch((err) => next(err))
+  ,
+  getQuestions: (quiz, req, res, next) =>
+    Questions.forge()
+    .query
 };
