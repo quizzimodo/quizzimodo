@@ -117,6 +117,10 @@ a {
   font-size: 8vw;
 }
 
+.md-toolbar-tools {
+  layout-align: center;
+  float: none;
+}
 #main .options {
   list-style-type:none;
   font-size: 6vw;
@@ -129,14 +133,11 @@ a {
   margin: 6px 8px 30px 8px;
   min-width: 88px;
   min-height: 80px;
-  border-radius: 3px;
   font-size: 50px;
   text-align: center;
   text-transform: uppercase;
   text-decoration:none;
-  border: none;
   outline: none;
-  border: 6px solid #000000;
   background-color: #4CAF50;
   color: black;
 }
