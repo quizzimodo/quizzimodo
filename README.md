@@ -58,7 +58,6 @@ public
 │    └──services.js
 │
 ├── views
-│   ├── answers.html
 │   ├── landing.html
 │   ├── main.html
 │   ├── makeQuiz.html
