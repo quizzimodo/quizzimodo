@@ -11,8 +11,6 @@ angular.module('quizzimodo.quiz', [])
 
   $scope.$watch('subtopicPick', function(y){
     $scope.userSubtopic = $scope.subTopics[y];
-    console.log('$scope.userSubtopic is: ', $scope.userSubtopic)
-
   });
 
   $scope.quiz = {
@@ -43,12 +41,13 @@ angular.module('quizzimodo.quiz', [])
   }
 
   $scope.addQuestion = function() {
-    if(checkQuestionFields()) {
+    // if(checkQuestionFields()) {
+      console.log('$rootScope.user.id is :', $rootScope.user.id)
       $scope.quiz.questions.push($scope.question);
       $scope.question = {question: '', answers: [{}, {}, {}, {}]};
-    } else {
-      alert('Please fill out the question and answer fields, and select a correct answer');
-    }
+    // } else {
+    //   alert('Please fill out the question and answer fields, and select a correct answer');
+    // }
   };
 
   $scope.editQuestion = function(index) {
@@ -80,6 +79,7 @@ angular.module('quizzimodo.quiz', [])
 
   $scope.submitQuiz = function() {
     // if(checkSubmitFields()) { 
+      $scope.quiz.created_by = $rootScope.user.id;
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
