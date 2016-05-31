@@ -14,7 +14,7 @@
           <label>Select Topic</label>
           <md-select ng-model="subtopicPick">
             <md-option ng-repeat="subtopic in subTopics" value="{{$index}}">
-              {{subtopic}}
+              {{subtopic.subtopic}}
             </md-option>
           </md-select>
         </md-input-container>
