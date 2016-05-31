@@ -15,11 +15,18 @@ a {
     font-family: Sketchy;
     src: url(assets/Sketchy.ttf);
 }
+
+.md-toolbar-tools:hover {
+  color: white;
+}
+
 #nav md-toolbar  {
   background-color: transparent;
+  color: transparent;
 }
 #nav md-toolbar:hover {
   background-color: #4CAF50;
+  color: white;
 }
 #landing {
   font-family: 'Sketchy';
@@ -43,6 +50,7 @@ a {
   font-family: 'Sketchy';
   color: white;
   font-size: 8vw;
+  padding-top: 80px;
   
 }
 .sketchy-form {
