@@ -76,6 +76,7 @@ a {
 #landing .instructions {
   font-size: 3.5vw;
   position: absolute;
+  top: 50px;
   right: 0;
   bottom: 0;
   left: 0;
