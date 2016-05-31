@@ -1,8 +1,9 @@
 <div id="user">
   <div id="w">
   <div id="content" class="clearfix">
-    <div id="userphoto"><img src="assets/avatar.png" alt="default avatar"></div>
-    <h1 class="subtitle">{{}}'s Profile</h1>
+    <div id="userphoto" >
+      <img src="assets/avatar.png" alt="default avatar"></div>
+      <h1 class="subtitle">{{profileUser}}'s Profile</h1>
 
     <nav id="profiletabs">
       <ul class="clearfix">
@@ -13,20 +14,22 @@
     </nav>
 
     <section id="quizzesTaken">
-
+      <ul>
+        <li ng-repeat="quiz in profileQuizzesTaken">{{quiz}}</li>
+      </ul>
     </section>
 
     <section id="quizzesMade" class="hidden">
-
+      <ul>
+        <li ng-repeat="quiz in profileQuizzesMade">{{quiz}}</li>
+      </ul>
     </section>
 
     <section id="settings" class="hidden">
-      <p>Edit your user settings:</p>
-
-      <p class="setting"><span>E-mail Address <img src="assets/edit.png" alt="*Edit*"></span> lolno@gmail.com</p>
-
-
-      <p class="setting"><span>Profile Status <img src="assets/edit.png" alt="*Edit*"></span> Public</p>
+      <p>Your user settings:</p>
+      <p class="setting"><span>E-mail Address</span> {{profileEmail}} </p>
+      <p class="setting"><span>Bio</span> {{profileBio}}</p>
+      <p class="setting"><span>Profile Status</span> Public</p>
 
 
     </section>
