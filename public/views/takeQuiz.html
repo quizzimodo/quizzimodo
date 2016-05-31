@@ -13,9 +13,9 @@
 	       </md-card-title>
 	       <div class="md-padding">
 		  <form>
-		    <div ng-repeat="answer in key.answers">
-		      <input id="$index" type="radio" ng-model="key.userAnswer" value="{{key.answers[$index].id}}">
-		      {{key.answers[$index].answer}}
+		    <div ng-repeat="answer in key.answer_options">
+		      <input id="$index" type="radio" ng-model="key.userAnswer" value="{{answer.id}}">
+		      {{answer.answer}}
 		    </div>
 		  </form>
 		  </div>
