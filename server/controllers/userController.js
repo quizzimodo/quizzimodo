@@ -22,12 +22,12 @@ module.exports = {
         .then((user) => {
           var expires = new Date().addHours(1);
           var token = jwt.encode({iss: user.id, exp: expires}, 'secret');
-          var data = {error: false, data: user, token: token};
+          var response = {error: false, data: {user: user}, token: token};
           Topics.forge()
           .fetch({withRelated: ['subtopics']})
           .then((topics) => {
-            data.topics = topics;
-            res.json(data);
+            response.data.topics = topics;
+            res.json(response);
           })
           .catch((err) => next(err));
         })
@@ -79,12 +79,12 @@ module.exports = {
           if (isMatch) {
             var expires = new Date().addHours(1);
             var token = jwt.encode({iss: user.id, exp: expires}, 'secret');
-            var data = {error: false, data: user, token: token};
+            var response = {error: false, data: {user: user}, token: token};
             Topics.forge()
             .fetch({withRelated: ['subtopics']})
             .then((topics) => {
-              data.topics = topics;
-              res.json(data);
+              response.data.topics = topics;
+              res.json(response);
             })
             .catch((err) => next(err));
           } else
