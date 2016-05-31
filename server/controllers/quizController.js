@@ -87,8 +87,8 @@ module.exports = {
     .catch((err) => next(err))
   ,
   createAttempt: (req, res, next) => {
-    var pass_count, 
-      fail_count, 
+    var pass_count = 0, 
+      fail_count = 0, 
       result = 0.0,
       quiz = req.body;
 
@@ -118,7 +118,7 @@ module.exports = {
     .then((attemptID) => {
       var user_answers = [];
       quiz.questions.forEach((question) => 
-        user_answer.push({attempt_id: attemptID[0], answer_option_id: question.userAnswer})
+        user_answers.push({attempt_id: attemptID[0], answer_option_id: question.userAnswer})
       );
       bookshelf.knex('user_answer').insert(user_answers)
       .then((userAnswerID) =>
