@@ -15,7 +15,12 @@ a {
     font-family: Sketchy;
     src: url(assets/Sketchy.ttf);
 }
-
+#nav md-toolbar  {
+  background-color: transparent;
+}
+#nav md-toolbar:hover {
+  background-color: #4CAF50;
+}
 #landing {
   font-family: 'Sketchy';
   color: white;
