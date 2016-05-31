@@ -31,7 +31,7 @@
     <type label="ENUM" length="1" sql="ENUM" quote=""/>
     <type label="SET" length="1" sql="SET" quote=""/>
   </group>
-</datatypes><table x="381" y="527" name="user">
+</datatypes><table x="201" y="541" name="user">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -57,7 +57,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="40" y="230" name="topic">
+<table x="43" y="324" name="topic">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -68,7 +68,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="174" y="227" name="subtopic">
+<table x="183" y="265" name="subtopic">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -117,7 +117,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="492" y="140" name="question">
+<table x="597" y="249" name="question">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -132,7 +132,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="671" y="286" name="answer_option">
+<table x="813" y="292" name="answer_option">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -150,7 +150,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="800" y="461" name="attempt">
+<table x="654" y="449" name="attempt">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -175,17 +175,13 @@
 <part>id</part>
 </key>
 </table>
-<table x="692" y="108" name="user_answer">
+<table x="832" y="448" name="user_answer">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="attempt_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
 <relation table="attempt" row="id" />
-</row>
-<row name="question_id" null="0" autoincrement="0">
-<datatype>INTEGER</datatype>
-<relation table="question" row="id" />
 </row>
 <row name="answer_option_id" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -195,7 +191,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="463" y="390" name="invitee">
+<table x="444" y="423" name="invitee">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
