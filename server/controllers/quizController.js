@@ -25,10 +25,10 @@ module.exports = {
           question: question.question
         }
       });
-      console.log('questions: ', questions);
+      // console.log('questions: ', questions);
       bookshelf.knex('question').insert(questions)
       .then((questionIDs) => {
-        console.log('questionIDs: ', questionIDs);
+        // console.log('questionIDs: ', questionIDs);
         var answerOptions = [];
         newQuiz.questions.forEach((question, idx) =>
           question.answer_options.forEach((answer_option) => {
@@ -40,7 +40,7 @@ module.exports = {
             answerOptions.push(answerOption);
           })
         );
-        console.log('answerOptions: ', answerOptions);
+        // console.log('answerOptions: ', answerOptions);
         bookshelf.knex('answer_option').insert(answerOptions)
         .then((answerOptionIDs) =>
           res.json({error: false, message: 'Quiz successfully added!'})
@@ -65,7 +65,7 @@ module.exports = {
     Quiz.forge({id: req.params.quiz_id})
     .fetch({require: true, withRelated: ['questions.answer_options', 'attempts.user_answers']})
     .then((quiz) => {
-      console.log("quiz.related('questions'): ", quiz.related('questions'));
+      // console.log("quiz.related('questions'): ", quiz.related('questions'));
       res.json({error: false, data: quiz})
     })
     .catch((err) => next(err))
@@ -107,10 +107,10 @@ module.exports = {
     });
 
     result = pass_count / (pass_count + fail_count);
-
+    // console.log('req.user', req.user);
     bookshelf.knex('attempt').insert({
-      quiz_id: quiz.quiz_id,
-      user_id: req.user,
+      quiz_id: quiz.id,
+      user_id: req.user.id,
       pass_count: pass_count,
       fail_count: fail_count,
       result: result

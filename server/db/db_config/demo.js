@@ -58,7 +58,8 @@ var DemoData = [
   {
     table: 'quiz',
     records: [
-      {subtopic_id: 14, quiz: 'Javascript Closures', public: true, created_by: 1}
+      {subtopic_id: 14, quiz: 'Javascript Closures', public: true, created_by: 1},
+      {subtopic_id: 14, quiz: 'MKS-LA Time Complexity', public: true, created_by: 1}
     ]
   },
   {
@@ -166,6 +167,73 @@ var DemoData = [
           console.log( i );
       }, i*1000 );
   }`
+      },
+      {
+        quiz_id: 2, 
+        question: `What is the Big O time complexity of the following function?
+
+function sumArray(arr) {
+  var sum = 0; 
+  for(var i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+    return sum;
+}`
+      },
+      {
+        quiz_id: 2, 
+        question: `What is the time complexity (Big O) of the following function?
+
+function unique (numbers) {
+  var results = []
+
+  for (var i=0; i < numbers.length; i++) {
+    var num = numbers[i];
+    if (numbers.indexOf(num) < 0) {
+      results.push(num);
+    }
+  }
+  return results;
+}`
+      },
+      {
+        quiz_id: 2, 
+        question: `What is the Big O time complexity of the following function?
+
+  function calculatePairs(a,b) {
+    for(var i = 0; i < a.length; i++) {
+      for(var j = 0; j < b.length; j++) {
+        for(var k = 0; k < 200; k++) {
+          console.log(a,b);
+        }
+      }
+    }
+  }`
+      },
+      {
+        quiz_id: 2, 
+        question: `What is the Big O time complexity of logging the value of each node in a binary tree?`
+      },
+      {
+        quiz_id: 2, 
+        question: `What is the average Big O time complexity of finding a value in a binary search tree?`
+      },
+      {
+        quiz_id: 2, 
+        question: `What is the Big O time complexity of the following function?
+
+
+function sumInts(a,b) {
+  return a + b;
+}`
+      },
+      {
+        quiz_id: 2, 
+        question: `What would be the Big O time complexity of trying to break a password by calculating every combination of letters given the length of the password?`
+      },
+      {
+        quiz_id: 2, 
+        question: `What is the Big O time complexity of finding the two largest nums in an array by comparing every number in the array to every other number?`
       }
     ]
   },
@@ -203,7 +271,46 @@ var DemoData = [
       {question_id: 8, answer: `0,1,2,3`, correct: false},
       {question_id: 8, answer: `3,3,3,3`, correct: false},
       {question_id: 8, answer: `4,4,4,4`, correct: true},
-      {question_id: 8, answer: `1,2,3,4`, correct: false}
+      {question_id: 8, answer: `1,2,3,4`, correct: false},
+      {question_id: 9, answer: `O(1) Constant`, correct: false},
+      {question_id: 9, answer: `O(n) Linear`, correct: true},
+      {question_id: 9, answer: `O(n^2) Quadratic`, correct: false},
+      {question_id: 9, answer: `O(log n) Logarithmic`, correct: false},
+      {question_id: 9, answer: `O(C^n) Exponential`, correct: false},
+      {question_id: 10, answer: `O(1) Constant`, correct: false},
+      {question_id: 10, answer: `O(log n) - Logarithmic`, correct: false},
+      {question_id: 10, answer: `O(n) - Linear`, correct: false},
+      {question_id: 10, answer: `O(n^2) - Quadratic`, correct: true},
+      {question_id: 11, answer: `O(n)`, correct: false},
+      {question_id: 11, answer: `O(n^2)`, correct: false},
+      {question_id: 11, answer: `O(ab)`, correct: true},
+      {question_id: 11, answer: `O(ab+k)`, correct: false},
+      {question_id: 11, answer: `O(abk)`, correct: false},
+      {question_id: 12, answer: `O(1) - Constant`, correct: false},
+      {question_id: 12, answer: `O(n) - Linear`, correct: true},
+      {question_id: 12, answer: `O(log n) - Logarithmic`, correct: false},
+      {question_id: 12, answer: `O(n^2) - Quadratic`, correct: false},
+      {question_id: 12, answer: `O(!n) - Exponential`, correct: false},
+      {question_id: 13, answer: `O(1) - Constant`, correct: false},
+      {question_id: 13, answer: `O(n) - Linear`, correct: false},
+      {question_id: 13, answer: `O(log n) - Logarithmic`, correct: true},
+      {question_id: 13, answer: `O(n^2) - Quadratic`, correct: false},
+      {question_id: 13, answer: `O(!n) - Exponential`, correct: false},
+      {question_id: 14, answer: `O(1) - Constant`, correct: true},
+      {question_id: 14, answer: `O(n) - Linear`, correct: false},
+      {question_id: 14, answer: `O(log n) - Logarithmic`, correct: false},
+      {question_id: 14, answer: `O(n^2) - Quadratic`, correct: false},
+      {question_id: 14, answer: `O(!n) - Exponential`, correct: false},
+      {question_id: 15, answer: `O(1) - Constant`, correct: false},
+      {question_id: 15, answer: `O(n) - Linear`, correct: false},
+      {question_id: 15, answer: `O(log n) - Logarithmic`, correct: false},
+      {question_id: 15, answer: `O(n^2) - Quadratic`, correct: false},
+      {question_id: 15, answer: `O(!n) - Exponential`, correct: true},
+      {question_id: 16, answer: `O(1) - Constant`, correct: false},
+      {question_id: 16, answer: `O(n) - Linear`, correct: false},
+      {question_id: 16, answer: `O(log n) - Logarithmic`, correct: false},
+      {question_id: 16, answer: `O(n^2) - Quadratic`, correct: true},
+      {question_id: 16, answer: `O(!n) - Exponential`, correct: false}
     ]
   },
   {
