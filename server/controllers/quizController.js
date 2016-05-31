@@ -110,7 +110,7 @@ module.exports = {
     // console.log('req.user', req.user);
     bookshelf.knex('attempt').insert({
       quiz_id: quiz.id,
-      user_id: req.user.id,
+      user_id: req.body.userID,
       pass_count: pass_count,
       fail_count: fail_count,
       result: result
