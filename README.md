@@ -96,6 +96,31 @@ public
 - user.js: displays user information on profile page
 
 
+## Back-end
 
+### Server
+
+- Node/Express server with  GET, POST, PUT and DELETE routes for user and quiz models. Routes, controllers middleware have been abstracted away to the routes, controllers, and config directories, respectively.
+
+- Bookshelf.js integrated to connect with SQLite database and provide model structure and promise-based queries
+
+### Database
+
+- 
+
+### Schema
+
+- Schema creates tables for: 
+  - users
+  - quizzes
+  - quiz invitees
+  - user attempts
+  - topics
+  - subtopics
+  - questions
+  - answer options
+  - users answers
+
+- 
 
 
