@@ -182,11 +182,13 @@ a {
 #topic-selector {
   background-color: white;
   font-family: 'Sketchy';
-}
+  color: black;
+  }
 
 #subtopic-selector {
   background-color: white;
   font-family: 'Sketchy';
+  color: black;
 }
 
 #quiz-selector {
@@ -232,14 +234,25 @@ a {
   font-size: 2vw;
 }
 #answer-setup {
-  background-color: dodgerblue;
+  background-color: #2F4F4F;
   layout-align: left;
+  color: white;
 }
 #quiz-setup {
-  background-color: green;
+  background-color: #2F4F4F;
+}
+
+#quiz-setup #title-form {
+  
+  color: white;
 }
 #all-questions {
-  background-color: pink;
+  background-color: #2F4F4F;
+  color: white;
+}
+
+#all-questions .list {
+  font-size: 20px;
 }
 .quiz-card {
   min-height: 150px;
@@ -353,8 +366,27 @@ a {
    height:50px;   /* Height of the footer */
 }
 
+.material-icons {
+  size: 15px;
+}
 .error {
   color: red;
+}
+
+input {
+  z-index: 10;
+  font-weight: bolder;
+}
+
+#title-form {
+  z-index: 10;
+  opacity: 1;
+  color: white;
+}
+
+#all-questions #greenify {
+  background-color: #2F4F4F;
+  color: white;
 }
 
 /*
