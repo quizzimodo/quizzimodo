@@ -1,22 +1,25 @@
 # Quizzimodo
-### A community-driven quizzing platform where users can create a quiz, invite other users, and take oublic quizzes or ones created by friends. A great tool for teachers or a good way to test your friends, Quizzimodo is the most fun you will ever have taking a quiz.
+
+#### A community-driven quizzing platform where users can create a quiz, invite other users, and take oublic quizzes or ones created by friends. A great tool for teachers or a good way to test your friends, Quizzimodo is the most fun you will ever have taking a quiz.
 
 ## Developer Documentation
 
 ### Contributors: 
-Lukas Stuart-Fry
-Doug Cole
-Forrest Akin
-Nathaniel Schwab
+
+- Lukas Stuart-Fry
+- Doug Cole
+- Forrest Akin
+- Nathaniel Schwab
 
 ### Tools Used:
-Angular
-Angular Material
-Angular UI-Router
-Node
-Express
-Bookshelf
-SQLite
+- Angular
+- Angular Material
+- Angular UI-Router
+- Node
+- Express
+- Bookshelf
+- SQLite
+>>>>>>> docWrite2
 
 ### To start contributing to Quizzimodo codebase:
 
@@ -34,6 +37,8 @@ SQLite
 
 Below, you’ll find the directory structure of the front-end. All Angular controllers can be found within the controllers directory. All routing can be found in the config directory.
 
+
+```
 
 public
 ├── assets
@@ -72,6 +77,7 @@ public
 ├── index.html
 └── styles.css
 
+```
 
 
 - Inside the config directory, in config.js is where all routing is defined. Each html view is matched with a corresponding controller
