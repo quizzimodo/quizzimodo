@@ -77,8 +77,6 @@ angular.module('quizzimodo.quiz', [])
   }
 
   $scope.submitQuiz = function() {
-    // if(checkSubmitFields()) { 
-      // $scope.quiz.questions.answer_options = $scope.question.answers;
       $scope.quiz.created_by = $rootScope.user.id;
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
       $scope.quiz.quiz = $scope.quizName;
@@ -87,7 +85,6 @@ angular.module('quizzimodo.quiz', [])
       if ($('#publicCheckbox').is(':checked')) {
         $scope.quiz.public = true;
       }
-      console.log('$scope.quiz is: ', $scope.quiz)
 
       Quiz.postQuiz($scope.quiz)
       .then(function() {
@@ -97,8 +94,5 @@ angular.module('quizzimodo.quiz', [])
       .catch(function(error) {
         console.error(error);
       });
-    // } else {
-    //   alert('Please fill out the question and answer fields, and select a correct answer');
-    // }
   }
 });
