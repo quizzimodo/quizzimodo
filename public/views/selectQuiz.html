@@ -14,7 +14,7 @@
         <label>Select Topic</label>
         <md-select ng-model="subtopicPick">
           <md-option ng-repeat="subtopic in subTopics" value="{{$index}}">
-            {{subtopic}}
+            {{subtopic.subtopic}}
           </md-option>
         </md-select>
       </md-input-container>
@@ -22,7 +22,7 @@
 	<md-content id="quiz-selector" class="md-padding" layout-xs="column" layout="row">
 	   <div flex-xs="" flex-gt-xs="90" layout="column">
 
-	     <md-card class="quiz-card" ng-repeat="key in quizzes | filter:userTopic | filter:userSubtopic">
+	     <md-card class="quiz-card" ng-repeat="key in quizzes | filter:userSubtopic">
 	       <md-card-title>
 	         <md-card-title-text>
 	           <span class="md-headline">{{ key.quiz }}</span>

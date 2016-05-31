@@ -8,14 +8,20 @@ angular.module('quizzimodo.quizzes', [])
   // {topicName: 'Foreign Languages', sub_topics: ['Spanish', 'French', 'Italian', 'German']}, 
   // {topicName: 'English', sub_topics: ['Literature', 'Grammar', 'Spelling', 'Famous Authors']}];
 
-  // $scope.$watch('topicPick', function(x){
-  //   $scope.userTopic = $scope.topics[x]['topic'];
-  //   $scope.subTopics = $scope.topics[x]['sub_topics'];
-  // });
 
-  // $scope.$watch('subtopicPick', function(y){
-  //   $scope.userSubtopic = $scope.subTopics[y];
-  // });
+  // $scope.topics = $rootScope.topics;
+  // console.log('This is topics: ', $scope.topics);
+
+  $scope.$watch('topicPick', function(x){
+    $scope.userTopic = $scope.topics[x]['topic'];
+    $scope.subTopics = $scope.topics[x]['subtopics'];
+  });
+
+  $scope.$watch('subtopicPick', function(y){
+    $scope.userSubtopic = $scope.subTopics[y];
+  });
+
+
   
   $scope.startUp = function(){
     Quiz.getQuizzes()
@@ -23,7 +29,8 @@ angular.module('quizzimodo.quizzes', [])
       console.log('This is the quizzes data: ', data);
       $scope.quizzes = data.data;
       $scope.image = '../assets/avatar.png';
-      $scope.topics = data.topics;
+      $scope.topics = $rootScope.topics;
+      console.log($scope.topics);
       if(data.data.result){
         $scope.taken = 'Retake';
       } else {
