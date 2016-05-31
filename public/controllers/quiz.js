@@ -2,6 +2,7 @@ angular.module('quizzimodo.quiz', [])
 
 .controller('QuizController', function($scope, $location, Quiz, $rootScope) {	 
 
+  //$scope.topics = $rootScope.topics
   $scope.topics = [{topicName: 'Science', sub_topics: ['Physics', 'Biology', 'Chemistry', 'Astronomy']}, 
   {topicName: 'Math', sub_topics: ['Algebra', 'Calculus', 'Trigonometry', 'Geometry']}, 
   {topicName: 'Tech', sub_topics: ['HTML', 'CSS', 'Javascript', 'Ruby', 'Python']}, 
@@ -24,12 +25,25 @@ angular.module('quizzimodo.quiz', [])
 
   $scope.question = {question: '', answers: [{}, {}, {}, {}]};
 
-  function checkFields () {
-    if($('.ng-empty').length > 0 || $('input[type=radio]:checked').length === 0) {
+  function checkQuestionFields () {
+    if($('input[type=radio]:checked').length === 0 
+      || $scope.question.question === ''
+      || $scope.question.answers[0].answer === ''
+      || $scope.question.answers[1].answer === ''
+      || $scope.question.answers[2].answer === ''
+      || $scope.question.answers[3].answer === ''
+    ) {
       return false;
-  }
-    return true;
+    }
+      return true;
   };
+
+  // function checkSubmitFields () {
+  //   if($scope.subtopicPick.hasClass('ng-empty') || $scope.topicPick.hasClass('ng-empty')
+  //     || $scope.quizDetails === '' || $scope.quizName === '') {
+  //     return false;
+  //   } return true;
+  // };
 
   function clearFields() {
     $scope.question.question = '';
@@ -39,12 +53,12 @@ angular.module('quizzimodo.quiz', [])
   }
 
   $scope.addQuestion = function() {
-    //if(checkFields()) {
+    if(checkQuestionFields()) {
       $scope.quiz.questions.push($scope.question);
       $scope.question = {question: '', answers: [{}, {}, {}, {}]};
-    // } else {
-    //   alert('Please fill out the question and answer fields, and select a correct answer');
-    // }
+    } else {
+      alert('Please fill out the question and answer fields, and select a correct answer');
+    }
   };
 
   $scope.editQuestion = function(index) {
@@ -75,15 +89,14 @@ angular.module('quizzimodo.quiz', [])
   }
 
   $scope.submitQuiz = function() {
-    //if(checkFields()) { 
+    // if(checkSubmitFields()) { 
       $scope.quiz.subtopic_id = $scope.subtopicPick;
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
+
       if ($('#publicCheckbox').is(':checked')) {
         $scope.quiz.public = true;
       }
-
-      console.log($scope.quiz.public);
 
       Quiz.postQuiz($scope.quiz)
       .then(function() {
