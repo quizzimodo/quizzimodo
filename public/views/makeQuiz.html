@@ -2,7 +2,7 @@
     <h1>Make a quiz</h1>
 
   <md-input-container id="topic-selector">
-          <label>Select Topic</label>
+          <label color="white">Select Topic</label>
           <md-select ng-model="topicPick">
             <md-option ng-repeat="topic in topics" value="{{$index}}">
               {{topic.topic}}
@@ -11,7 +11,7 @@
         </md-input-container>
 
         <md-input-container id="subtopic-selector">
-          <label>Select Topic</label>
+          <label color="white">Select Sub-Topic</label>
           <md-select ng-model="subtopicPick">
             <md-option ng-repeat="subtopic in subTopics" value="{{$index}}">
               {{subtopic.subtopic}}
@@ -23,51 +23,52 @@
   <div layout="column" layout-align="center stretch">
     <md-content id="quiz-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left center">
        <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
-        <form>
+        <form id="title-form">
            Quiz Title: <input type="text" ng-model="quizName" /><br />
            Quiz Details: <input type="text" ng-model="quizDetails" /><br />
         </form>
       </div>
     </md-content>
-    <md-content id="answer-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left" >
+    <md-content id="answer-setup" class="md-padding" layout-xs="column" layout="row" layout-align="left center">
       <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left">
+    <div id="question">
+    <form>
+      Question: <input type="text" ng-model="question.question" /><br /><br>
+    </form>
+    <div id="answers">
+      <form id="answerForm">
+      Mark the correct answer:
+        <br>
+        <div ng-repeat="answer in question.answers">
+          <input type="radio" name="answerRadio" ng-value=true ng-model="answer.correct"> Answer {{$index + 1}}: <input type="text" ng-model="question.answers[$index].answer" /><br />
+        </div>
+          <section layout="row" layout-sm="column" layout-wrap="">
+          <md-button class="md-raised" ng-hide="currentlyEditing" ng-click="addQuestion()">Add a Question</md-button> 
+          <section layout="row" layout-sm="column" layout-wrap="">
+          <md-button class="md-raised" ng-show="currentlyEditing" ng-click="updateQuestion()">Update Question</md-button>
+          <section layout="row" layout-sm="column" layout-wrap="">
+          <md-button class="md-raised" ng-hide="currentlyEditing" ng-click="submitQuiz(quiz.quiz, quiz.details)">Submit Quiz</md-button>
+          <div>
+            Make quiz public? <input id="publicCheckbox" name="publicCheckbox" value="true" type="checkbox">
+          </div>
+      </form>
+    </div></div>
+        </div>
+      </md-content>
        </div>
   
-  <div id="question">
-  <form>
-    Question: <input type="text" ng-model="question.question" /><br /><br>
-  </form>
-  <div id="answers">
-    <form id="answerForm">
-    Mark the correct answer:
-      <br>
-      <div ng-repeat="answer in question.answers">
-        <input type="radio" name="answerRadio" ng-value=true ng-model="answer.correct"> Answer {{$index + 1}}: <input type="text" ng-model="question.answers[$index].answer" /><br />
-      </div>
-        <section layout="row" layout-sm="column" layout-wrap="">
-        <md-button class="md-raised" ng-hide="currentlyEditing" ng-click="addQuestion()">Add a Question</md-button> 
-        <section layout="row" layout-sm="column" layout-wrap="">
-        <md-button class="md-raised" ng-show="currentlyEditing" ng-click="updateQuestion()">Update Question</md-button>
-        <section layout="row" layout-sm="column" layout-wrap="">
-        <md-button class="md-raised" ng-hide="currentlyEditing" ng-click="submitQuiz(quiz.quiz, quiz.details)">Submit Quiz</md-button>
-        <div>
-          Make quiz public? <input id="publicCheckbox" name="publicCheckbox" value="true" type="checkbox">
-        </div>
-    </form>
-  </div></div>
-      </div>
-    </md-content>
   
-  <div layout="row" layout-align="none stretch" flex-xs="50" flex-gt-xs="50">
-    <md-content id='all-questions' class="md-padding" layout-xs="column" layout="row" layout-align="left">
+  
+  <div id='all-questions' layout="row" layout-align="none stretch" flex-xs="50" flex-gt-xs="50">
+    <md-content  id="greenify" class="md-padding" layout-xs="column" layout="row" layout-align="left">
         <div layout="column" layout-align="left">
           
-          <div>All Questions<br><br></div>
+          <div layout="center">All Questions<br><br></div>
           <div flex-xs="50" flex-gt-xs="50" layout="column" layout-align="left center">
-            <ul ng-repeat="question in quiz.questions">
+            <ul class="list" ng-repeat="question in quiz.questions">
               <li>{{question.question}}
-                <button ng-click="editQuestion($index)"><i class="material-icons">mode_edit</i></button>
-                <button ng-click="deleteQuestion($index)"><i class="material-icons">delete_forever</i></button>
+                <button class="material-icons" ng-click="editQuestion($index)"><i class="material-icons">mode_edit</i></button>
+                <button class="material-icons" ng-click="deleteQuestion($index)"><i class="material-icons">delete_forever</i></button>
               </li>
             </ul>
           </div>
