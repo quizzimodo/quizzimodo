@@ -35,13 +35,6 @@ angular.module('quizzimodo.quiz', [])
       return true;
   };
 
-  // function checkSubmitFields () {
-  //   if($scope.subtopicPick.hasClass('ng-empty') || $scope.topicPick.hasClass('ng-empty')
-  //     || $scope.quizDetails === '' || $scope.quizName === '') {
-  //     return false;
-  //   } return true;
-  // };
-
   function clearFields() {
     $scope.question.question = '';
     for(var i = 0; i < $scope.question.answers.length; i++) {
@@ -50,12 +43,12 @@ angular.module('quizzimodo.quiz', [])
   }
 
   $scope.addQuestion = function() {
-    // if(checkQuestionFields()) {
+    if(checkQuestionFields()) {
       $scope.quiz.questions.push($scope.question);
       $scope.question = {question: '', answers: [{}, {}, {}, {}]};
-    // } else {
-    //   alert('Please fill out the question and answer fields, and select a correct answer');
-    // }
+    } else {
+      alert('Please fill out the question and answer fields, and select a correct answer');
+    }
   };
 
   $scope.editQuestion = function(index) {
