@@ -33,7 +33,7 @@ angular.module('quizzimodo.auth', [])
   $scope.signin = function() {
     Auth.signin($scope.user)
     .then(function (resp) {
-      console.log('resp is: ', resp)
+      console.log('resp.topics is: ', resp.topics)
       $window.localStorage.setItem('com.quizzimodo', resp.token);
       $rootScope.topics = resp.topics;
       $rootScope.userID = resp.data.id;
@@ -49,7 +49,7 @@ angular.module('quizzimodo.auth', [])
     Auth.signup($scope.user)
     .then(function(resp) {
       $window.localStorage.setItem('com.quizzimodo', resp.token);
-      $rootScope.topics = resp.topics;
+      $rootScope.topics = resp.data.topics;
       $rootScope.userID = resp.data.id;
       $location.path('/main');
     })
