@@ -2,7 +2,7 @@ var helpers = require('../config/helpers.js');
 var quizController = require('../controllers/quizController.js');
 
 module.exports = function (app) {
-  app.all(helpers.requireAuth);
+  // app.all('*', helpers.requireAuth);
   app.route('/')
     .get(quizController.getQuizzes)
     .post(quizController.createQuiz);
