@@ -26,8 +26,9 @@ a {
 }
 #nav md-toolbar:hover {
   background-color: #4CAF50;
-  color: white;
+  color: white ;
 }
+
 #landing {
   font-family: 'Sketchy';
   color: white;
@@ -48,7 +49,7 @@ a {
 
 .title {
   font-family: 'Sketchy';
-  color: white;
+  color: #4CAF50;
   font-size: 8vw;
   padding-top: 80px;
   
@@ -248,12 +249,12 @@ a {
   font-size: 2vw;
 }
 #answer-setup {
-  background-color: #2F4F4F;
+  background-color: #787878;
   layout-align: left;
   color: white;
 }
 #quiz-setup {
-  background-color: #2F4F4F;
+  background-color: #787878;
 }
 
 #quiz-setup #title-form {
@@ -261,7 +262,7 @@ a {
   color: white;
 }
 #all-questions {
-  background-color: #2F4F4F;
+  background-color: #787878;
   color: white;
 }
 
@@ -399,7 +400,7 @@ input {
 }
 
 #all-questions #greenify {
-  background-color: #2F4F4F;
+  background-color: #787878;
   color: white;
 }
 
