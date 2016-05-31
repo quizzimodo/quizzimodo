@@ -1,6 +1,6 @@
-var Topic = require('../models/topic.js');
 var User = require('../models/user.js');
 var Users = require('../collections/users.js');
+var Topics = require('../collections/topics.js');
 var jwt = require('jwt-simple');
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
           var expires = new Date().addHours(1);
           var token = jwt.encode({iss: user.id, exp: expires}, 'secret');
           var data = {error: false, data: user, token: token};
-          Topic.forge()
+          Topics.forge()
           .fetch({withRelated: ['subtopics']})
           .then((topics) => {
             data.topics = topics;
@@ -80,7 +80,7 @@ module.exports = {
             var expires = new Date().addHours(1);
             var token = jwt.encode({iss: user.id, exp: expires}, 'secret');
             var data = {error: false, data: user, token: token};
-            Topic.forge()
+            Topics.forge()
             .fetch({withRelated: ['subtopics']})
             .then((topics) => {
               data.topics = topics;

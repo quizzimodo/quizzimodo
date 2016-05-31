@@ -5,4 +5,4 @@ var Questions = bookshelf.Collection.extend({
   model: Question
 });
 
-module.exports = Questions;
+module.exports = bookshelf.collection('Questions', Questions);
