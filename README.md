@@ -19,7 +19,6 @@
 - Express
 - Bookshelf
 - SQLite
->>>>>>> docWrite2
 
 ### To start contributing to Quizzimodo codebase:
 
