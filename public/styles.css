@@ -60,7 +60,7 @@ a {
   font-size: 4.2vw;
 }
 #landing .instructions {
-  font-size: 3vw;
+  font-size: 3.5vw;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -69,7 +69,7 @@ a {
   text-align: center;
 }
 #landing .instructions A:hover {
-  font-size: 3vw;
+  font-size: 3.5vw;
   color: #4CAF50;
 }
 #landing .instructions A:visited {
