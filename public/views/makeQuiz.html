@@ -39,8 +39,8 @@
       <form id="answerForm">
       Mark the correct answer:
         <br>
-        <div ng-repeat="answer in question.answers">
-          <input type="radio" name="answerRadio" ng-value=true ng-model="answer.correct"> Answer {{$index + 1}}: <input type="text" ng-model="question.answers[$index].answer" /><br />
+        <div ng-repeat="answer in question.answer_options">
+          <input type="radio" name="answerRadio" ng-value=true ng-model="answer.correct"> Answer {{$index + 1}}: <input type="text" ng-model="question.answer_options[$index].answer" /><br />
         </div>
           <section layout="row" layout-sm="column" layout-wrap="">
           <md-button class="md-raised" ng-hide="currentlyEditing" ng-click="addQuestion()">Add a Question</md-button> 

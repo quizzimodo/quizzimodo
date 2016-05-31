@@ -18,15 +18,15 @@ angular.module('quizzimodo.quiz', [])
   }
   $scope.currentlyEditing = false;
 
-  $scope.question = {question: '', answers: [{}, {}, {}, {}]};
+  $scope.question = {question: '', answer_options: [{}, {}, {}, {}]};
 
   function checkQuestionFields () {
     if($('input[type=radio]:checked').length === 0 
       || $scope.question.question === ''
-      || $scope.question.answers[0].answer === ''
-      || $scope.question.answers[1].answer === ''
-      || $scope.question.answers[2].answer === ''
-      || $scope.question.answers[3].answer === ''
+      || $scope.question.answer_options[0].answer === ''
+      || $scope.question.answer_options[1].answer === ''
+      || $scope.question.answer_options[2].answer === ''
+      || $scope.question.answer_options[3].answer === ''
     ) {
       return false;
     }
@@ -35,27 +35,26 @@ angular.module('quizzimodo.quiz', [])
 
   function clearFields() {
     $scope.question.question = '';
-    for(var i = 0; i < $scope.question.answers.length; i++) {
-      $scope.question.answers[i].answer = '';
+    for(var i = 0; i < $scope.question.answer_options.length; i++) {
+      $scope.question.answer_options[i].answer = '';
     }
   }
 
   $scope.addQuestion = function() {
-    // if(checkQuestionFields()) {
-      console.log('$rootScope.user.id is :', $rootScope.user.id)
+    if(checkQuestionFields()) {
       $scope.quiz.questions.push($scope.question);
-      $scope.question = {question: '', answers: [{}, {}, {}, {}]};
-    // } else {
-    //   alert('Please fill out the question and answer fields, and select a correct answer');
-    // }
+      $scope.question = {question: '', answer_options: [{}, {}, {}, {}]};
+    } else {
+      alert('Please fill out the question and answer fields, and select a correct answer');
+    }
   };
 
   $scope.editQuestion = function(index) {
     $scope.index = index;
     $scope.question.question = this.question.question;
-    for(var i = 0; i < $scope.question.answers.length; i++) {
-      $scope.question.answers[i].answer = this.question.answers[i].answer;
-      $scope.question.answers[i].correct = this.question.answers[i].correct;
+    for(var i = 0; i < $scope.question.answer_options.length; i++) {
+      $scope.question.answer_options[i].answer = this.question.answer_options[i].answer;
+      $scope.question.answer_options[i].correct = this.question.answer_options[i].correct;
     }
     $scope.currentlyEditing = true;
   }
@@ -70,8 +69,8 @@ angular.module('quizzimodo.quiz', [])
 
   $scope.updateQuestion = function() {
     $scope.quiz.questions[$scope.index].question = $scope.question.question;
-    for(var i = 0; i < $scope.quiz.questions[$scope.index].answers.length; i++) {
-      $scope.quiz.questions[$scope.index].answers[i].answer = $scope.question.answers[i].answer;
+    for(var i = 0; i < $scope.quiz.questions[$scope.index].answer_options.length; i++) {
+      $scope.quiz.questions[$scope.index].answer_options[i].answer = $scope.question.answer_options[i].answer;
     }
     clearFields();
     $scope.currentlyEditing = false;
@@ -79,14 +78,16 @@ angular.module('quizzimodo.quiz', [])
 
   $scope.submitQuiz = function() {
     // if(checkSubmitFields()) { 
+      // $scope.quiz.questions.answer_options = $scope.question.answers;
       $scope.quiz.created_by = $rootScope.user.id;
       $scope.quiz.subtopic_id = $scope.userSubtopic.id;
       $scope.quiz.quiz = $scope.quizName;
       $scope.quiz.details = $scope.quizDetails;
-
+      $scope.quiz.public = false;
       if ($('#publicCheckbox').is(':checked')) {
         $scope.quiz.public = true;
       }
+      console.log('$scope.quiz is: ', $scope.quiz)
 
       Quiz.postQuiz($scope.quiz)
       .then(function() {
