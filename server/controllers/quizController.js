@@ -43,7 +43,7 @@ module.exports = {
         console.log('answerOptions: ', answerOptions);
         bookshelf.knex('answer_option').insert(answerOptions)
         .then((answerOptionIDs) =>
-          res.json({error: false, data: 'Quiz successfully added!'})
+          res.json({error: false, message: 'Quiz successfully added!'})
         )
         .catch((err) => next(err));
       })
@@ -56,7 +56,7 @@ module.exports = {
     .fetch({require: true})
     .then((quiz) =>
       quiz.save({active: false})
-      .then((quiz) => res.json({error: false, data: {message: 'Quiz successfully deleted'}}))
+      .then((quiz) => res.json({error: false, message: 'Quiz successfully deleted'}))
       .catch((err) => next(err))
     )
     .catch((err) => next(err))
@@ -86,7 +86,6 @@ module.exports = {
     )
     .catch((err) => next(err))
   ,
-  getQuestions: (quiz, req, res, next) =>
-    Questions.forge()
-    .query
+  createAttempt: (req, res, next) =>
+    1
 };
