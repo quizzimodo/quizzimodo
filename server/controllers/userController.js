@@ -47,7 +47,7 @@ module.exports = {
   ,
   getUser: (req, res, next) =>
     User.forge({user_id: req.params.user_id})
-    .fetch()
+    .fetch({require: true, withRelated: ['quizzes', 'attempts.quiz']})
     .then((user) => res.json({error: false, data: user}))
     .catch((err) => next(err))
   ,
@@ -69,7 +69,7 @@ module.exports = {
   ,
   signin: (req, res, next) => 
     User.forge({username: req.body.username})
-    .fetch()
+    .fetch({require: true, withRelated: ['quizzes', 'attempts.quiz']})
     .then((user) => {
       if (!user)
         next(new Error('User does not exist'));

@@ -86,6 +86,46 @@ module.exports = {
     )
     .catch((err) => next(err))
   ,
-  createAttempt: (req, res, next) =>
-    1
+  createAttempt: (req, res, next) => {
+    var pass_count, 
+      fail_count, 
+      result = 0.0,
+      quiz = req.body;
+
+    quiz.questions.forEach((question) => {
+      var pass = false;
+      question.answer_options.forEach((answer_option) => {
+        if (answer_option.id === question.userAnswer) {
+          pass = true;
+        }
+      });
+      if(pass) {
+        pass_count++;
+      } else {
+        fail_count++;
+      }
+    });
+
+    result = pass_count / (pass_count + fail_count);
+
+    bookshelf.knex('attempt').insert({
+      quiz_id: quiz.quiz_id,
+      user_id: req.user,
+      pass_count: pass_count,
+      fail_count: fail_count,
+      result: result
+    })
+    .then((attemptID) => {
+      var user_answers = [];
+      quiz.questions.forEach((question) => 
+        user_answer.push({attempt_id: attemptID[0], answer_option_id: question.userAnswer})
+      );
+      bookshelf.knex('user_answer').insert(user_answers)
+      .then((userAnswerID) =>
+        res.json({error: false, message: 'Results saved!'})
+      )
+      .catch((err) => next(err));
+    })
+    .catch((err) => next(err));
+  }
 };
