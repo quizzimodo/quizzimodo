@@ -8,7 +8,8 @@ angular.module('quizzimodo.quizzes', [])
   });
 
   $scope.$watch('subtopicPick', function(y){
-    $scope.userSubtopic = $scope.subTopics[y];
+    $scope.userSubtopic = $scope.subTopics[y].id;
+    console.log('This is subtopic', $scope.userSubtopic);
   });
 
 
