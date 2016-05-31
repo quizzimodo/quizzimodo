@@ -74,7 +74,7 @@ angular.module('quizzimodo.services', [])
   var postResults = function(quizResult) {
     return $http({
       method: 'POST',
-      url: '/api/submit',
+      url: '/api/quizzes/submit',
       data: quizResult
     })
     .then(function(resp) {
