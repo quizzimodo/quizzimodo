@@ -122,7 +122,7 @@ module.exports = {
       );
       bookshelf.knex('user_answer').insert(user_answers)
       .then((userAnswerID) =>
-        res.json({error: false, message: 'Results saved!'})
+        res.json({error: false, data: result, message: 'Results saved!'})
       )
       .catch((err) => next(err));
     })
