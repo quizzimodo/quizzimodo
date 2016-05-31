@@ -7,7 +7,7 @@ require('./attempt.js');
 var User = bookshelf.Model.extend({
   tableName: 'user',
   hasTimestamps: true,
-  quizzes: function () { return this.hasMany('Quiz') },
+  quizzes: function () { return this.hasMany('Quiz', 'created_by') },
   invitees: function () { return this.hasMany('Invitee') },
   attempts: function () { return this.hasMany('Attempt') },
   initialize: function() {
