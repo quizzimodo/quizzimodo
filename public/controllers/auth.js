@@ -35,7 +35,7 @@ angular.module('quizzimodo.auth', [])
     .then(function (resp) {
       $window.localStorage.setItem('com.quizzimodo', resp.token);
       $rootScope.topics = resp.data.topics;
-      $rootScope.userID = resp.data.id;
+      $rootScope.user = resp.data.user;
       $location.path('/main');
     })
     .catch(function(error) {
@@ -49,7 +49,7 @@ angular.module('quizzimodo.auth', [])
     .then(function(resp) {
       $window.localStorage.setItem('com.quizzimodo', resp.token);
       $rootScope.topics = resp.data.topics;
-      $rootScope.userID = resp.data.id;
+      $rootScope.user = resp.data.user;
       $location.path('/main');
     })
     .catch(function(error) {
