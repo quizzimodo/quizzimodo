@@ -2,6 +2,7 @@ var path = require('path');
 var sequence = require('when/sequence');
 var _ = require('lodash');
 var knex;
+var migrate = require('./migrate.js')();
 
 if (process.env.DATABASE_URL) {
   knex = require('knex')({
