@@ -26,6 +26,7 @@ module.exports = () => {
 
   var dropTables = () => {
     var tableNames = _.keys(Schema);
+    tableNames.reverse();
     var tables = _.map(tableNames, (tableName) => () => knex.schema.dropTableIfExists(tableName));
     return sequence(tables);
   };
