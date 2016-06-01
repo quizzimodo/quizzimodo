@@ -101,7 +101,7 @@ module.exports = () => {
       importDemo()
       .then(() => {
         console.log('Demo data imported!'); 
-        process.exit(0);
+        // process.exit(0);
       })
       .catch((error) => { throw error });
     })
