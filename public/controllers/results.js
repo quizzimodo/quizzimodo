@@ -6,16 +6,7 @@ angular.module('quizzimodo.results', [])
 
   $scope.getResults = function(){
     $scope.quizName = $scope.quizResult.name;
-    $scope.quizScore = $scope.quizResult.result;
-
-    // Quiz.getQuiz($scope.quizID).then(function(data){
-    //   console.log('The retrieved data', data);
-    //   $scope.quizName = data.data.quiz;
-    //   $scope.quizResult = data.data.attempts[0].result;
-    // }).catch(function(err){
-    //   $scope.loadError = 'Error loading results';
-    //   console.log(err);
-    // });
+    $scope.quizScore = $scope.quizResult.result * 100;
   };
   $scope.getResults();
 
