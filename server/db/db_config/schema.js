@@ -1,10 +1,10 @@
 module.exports = {
   user: {
     id: {type: 'increments', nullable: false, primary: true},
-    username: {type: 'string', nullable: false, maxlength: 20},
-    password: {type: 'string', nullable: false, maxlength: 20},
-    name: {type: 'string', nullable: false, maxlength: 50},
-    email: {type: 'string', nullable: false, maxlength: 50},
+    username: {type: 'string', nullable: false, maxlength: 200},
+    password: {type: 'string', nullable: false, maxlength: 200},
+    name: {type: 'string', nullable: false, maxlength: 200},
+    email: {type: 'string', nullable: false, maxlength: 200},
     bio: {type: 'text', nullable: true},
     active: {type: 'boolean', nullable: false, defaultTo: true}
   },

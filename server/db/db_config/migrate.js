@@ -5,11 +5,10 @@ var knex;
 
 module.exports = () => {
   if (process.env.DATABASE_URL) {
-  knex = require('knex')({
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    useNullAsDefault: true
-  });
+    knex = require('knex')({
+      client: 'pg',
+      connection: process.env.DATABASE_URL
+    });
   } else {
     knex = require('knex')({
       client: 'sqlite3',
