@@ -22,7 +22,8 @@ angular.module('quizzimodo.take', [])
     $scope.quiz.userID = $rootScope.user.id;
     console.log("This is the completed quiz", $scope.quiz);
     Quiz.postResults($scope.quiz).then(function(data){
-      Quiz.setData($scope.quizID);
+      console.log('This is submit response', data);
+      Quiz.setData({id: $scope.quizID, name: $scope.quiz.quiz, result: data.data});
       $location.path('/results');
     }).catch(function(error){
       $scope.submitError = 'Error submitting quiz';
