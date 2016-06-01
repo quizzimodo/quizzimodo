@@ -4,6 +4,7 @@ var _ = require('lodash');
 var knex;
 
 module.exports = () => {
+  consOle.log('DATABASE_URL: ', process.env.DATABASE_URL);
   if (process.env.DATABASE_URL) {
     knex = require('knex')({
       client: 'pg',
