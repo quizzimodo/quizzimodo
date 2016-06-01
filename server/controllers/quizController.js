@@ -95,7 +95,9 @@ module.exports = {
     quiz.questions.forEach((question) => {
       var pass = false;
       question.answer_options.forEach((answer_option) => {
-        if (answer_option.id === question.userAnswer) {
+        console.log('answer_option.id: ', answer_option.id);
+        console.log('question.userAnswer: ', question.userAnswer);
+        if (answer_option.correct && answer_option.id == question.userAnswer) {
           pass = true;
         }
       });
@@ -105,8 +107,10 @@ module.exports = {
         fail_count++;
       }
     });
-
+    console.log('pass_count: ', pass_count);
+    console.log('fail_count: ', fail_count);
     result = pass_count / (pass_count + fail_count);
+    console.log('result: ', result);
     // console.log('req.user', req.user);
     bookshelf.knex('attempt').insert({
       quiz_id: quiz.id,
