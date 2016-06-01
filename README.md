@@ -1,6 +1,6 @@
 # Quizzimodo
 
-#### A community-driven quizzing platform where users can create a quiz, invite other users, and take oublic quizzes or ones created by friends. A great tool for teachers or a good way to test your friends, Quizzimodo is the most fun you will ever have taking a quiz.
+#### A community-driven quizzing platform where users can create a quiz, invite other users, and take public quizzes or ones created by friends. A great tool for teachers or a good way to test your friends, Quizzimodo is the most fun you will ever have taking a quiz.
 
 ## Developer Documentation
 
@@ -34,8 +34,7 @@
 
 ### Client application information
 
-Below, you’ll find the directory structure of the front-end. All Angular controllers can be found within the controllers directory. All routing can be found in the config directory.
-
+Below, you’ll find the directory structure of the front-end. 
 
 ```
 
@@ -77,6 +76,7 @@ public
 
 ```
 
+- All Angular controllers can be found within the controllers directory, all routing can be found in the config directory and all server calls are inside factories inside services.js
 
 - Inside the config directory, in config.js is where all routing is defined. Each html view is matched with a corresponding controller
 
@@ -101,11 +101,11 @@ public
 
 - Node/Express server with  GET, POST, PUT and DELETE routes for user and quiz models. Routes, controllers middleware have been abstracted away to the routes, controllers, and config directories, respectively.
 
-- Bookshelf.js integrated to connect with SQLite database and provide model structure and promise-based queries
+- Bookshelf.js ORM integrated to connect with PostgreSQL database and provide model structure and promise-based queries
 
 ### Database
 
-- 
+- PostgreSQL
 
 ### Schema
 
@@ -119,7 +119,5 @@ public
   - questions
   - answer options
   - users answers
-
-- 
 
 
